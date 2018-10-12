@@ -300,3 +300,64 @@ tr:nth-child(odd){
     overflow: auto;
 }
 /* Responsive Table CSS ends here */
+
+
+/* media queries for width */
+@media(max-width: 900px) {
+    .content {
+        padding: 0 80px;
+    }
+}
+
+@media(max-width: 830px) {
+    .add-to-cart-area {
+        flex-direction: column;
+    }
+    .cart {
+        margin: 20px 0;
+        width: 100%;
+    }
+    .add-to-cart-div {
+        width: 100%;
+    }
+}
+
+@media(max-width: 758px) {
+    .products > div.product {
+        height: 400px;
+        width: 100%;
+    }
+    .content {
+        padding: 0 120px;
+    }
+}
+
+@media(max-width: 645px) {
+    .content {
+        padding: 0 100px;
+    }
+}
+
+@media(max-width: 570px) {
+    .hamburger {
+        display: block;
+    }
+    nav {
+        justify-content: flex-end;
+    }
+    .nav {
+        display: none;
+    }
+    .content {
+        padding: 0 50px;
+    }
+}
+
+
+/* media queries for height */
+@media (max-height: 634px) {
+    .container,
+    .welcome-area {
+      height: 137vh;
+    }
+  }
