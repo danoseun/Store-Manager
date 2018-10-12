@@ -32,48 +32,65 @@
         </div>
     </header>
     <!-- <div class="container"> -->
-        <!-- <div class="welcome-area"> -->
-                <div class="content">
-                        <h1>Available Products</h1>
-                        <div class="products">
-                            <div class="product">
-                                <img src="images/choc.jpg" alt="">
-                                <div class="product-name name1 title">Chocalate</div>
-                            </div>
-                            <div class="product">
-                                <img src="images/bread.jpg" alt="">
-                                <div class="product-name title">Bread</div>
-                            </div>
-                            <div class="product">
-                                <img src="images/homebg.jpg" alt="">
-                                <div class="product-name title">Wears</div>
-                            </div>
-                            <div class="product">
-                                <img src="images/burrito.jpg" alt="">
-                                <div class="product-name title">Burritos</div>
-                            </div>
-                            <div class="product">
-                                <img src="images/fruits.jpg" alt="">
-                                <div class="product-name title">Fresh Fruits</div>
-                            </div>
-                            <div class="product">
-                                <img src="images/drinks.jpg" alt="">
-                                <div class="product-name title">Drinks</div>
-                            </div>
-                        </div>
-                    </div>
-        
-                <!-- </div> -->
-            <!-- </div> -->
-           
-            <div class="modal">
-                    <form action="add-to-cart.html" class="signup-form">
-                        <div class="cancel">&#9746;</div>
-                        <h1>Create New Attendant</h1>
-                        <label for="email">Email:</label>
-                        <input type="text" placeholder="Email" autofocus autocomplete="">
-                        <label for="password">Password:</label>
-                        <input type="password" placeholder="Password">
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
+    <!-- <div class="welcome-area"> -->
+    <div class="content">
+        <h1>Available Products</h1>
+        <div class="products">
+            <div class="product">
+                <img src="images/choc.jpg" alt="">
+                <div class="product-name name1 title">Chocalate</div>
+            </div>
+            <div class="product">
+                <img src="images/bread.jpg" alt="">
+                <div class="product-name title">Bread</div>
+            </div>
+            <div class="product">
+                <img src="images/homebg.jpg" alt="">
+                <div class="product-name title">Wears</div>
+            </div>
+            <div class="product">
+                <img src="images/burrito.jpg" alt="">
+                <div class="product-name title">Burritos</div>
+            </div>
+            <div class="product">
+                <img src="images/fruits.jpg" alt="">
+                <div class="product-name title">Fresh Fruits</div>
+            </div>
+            <div class="product">
+                <img src="images/drinks.jpg" alt="">
+                <div class="product-name title">Drinks</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- </div> -->
+    <!-- </div> -->
+
+    <div class="modal">
+        <form action="add-to-cart.html" class="signup-form">
+            <div class="cancel">&#9746;</div>
+            <h1>Create New Attendant</h1>
+            <label for="email">Email:</label>
+            <input type="text" placeholder="Email" autofocus autocomplete="">
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Password">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="productModal">
+        <div class="product-details">
+            <div class="close">&#9746;</div>
+            <img src="images/homebg.jpg" alt="">
+            <div class="product-name">Chocalate</div>
+            <div class="quantity">Available Quantity: 25</div>
+            <div class="action-button">
+                <div class="delete">&#10006;</div>
+                <div class="edit">&#9998;</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cart.js"></script>
+</body>
+
+</html>
