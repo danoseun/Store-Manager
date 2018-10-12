@@ -89,6 +89,7 @@ header {
       justify-content: space-around;
       background: #cccccc
   }
+  
   .modal {
     position: fixed;
     top: 0;
@@ -257,3 +258,45 @@ header {
       cursor: pointer;
       margin-top: 5px;
   }
+
+  /* Responsive Table CSS begins here */
+.sales-table {
+    overflow-x: auto;
+    margin: 50px auto;
+    max-width: 1000px;
+    padding: 0 10px;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even){
+    background-color: #f2f2f2
+}
+tr:nth-child(odd){
+    background-color: #cccccc
+}
+.table-head {
+    color: #fff;
+}
+.attendant-email {
+    cursor: pointer;
+}
+.attendant-email a {
+    color: #000;
+}
+.attendant-email:hover {
+    font-weight: bold;
+}
+.test-row {
+    width: 500px;
+    height: 200px;
+    overflow: auto;
+}
+/* Responsive Table CSS ends here */
