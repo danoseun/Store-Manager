@@ -358,6 +358,6 @@ tr:nth-child(odd){
 @media (max-height: 634px) {
     .container,
     .welcome-area {
-      height: 137vh;
+      height: 138vh;
     }
   }
