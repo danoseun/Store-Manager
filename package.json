@@ -1,0 +1,30 @@
+{
+  "name": "store-manager",
+  "version": "1.0.0",
+  "description": "Store Manager is a web application that helps store owners manage sales and product inventory records. This application is meant for use in a single store.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danoseun/Store-Manager.git"
+  },
+  "keywords": [
+    "express",
+    "postgres",
+    "javascript",
+    "es6"
+  ],
+  "author": "Oluwaseun Somefun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danoseun/Store-Manager/issues"
+  },
+  "homepage": "https://github.com/danoseun/Store-Manager#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  }
+}
