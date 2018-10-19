@@ -35,6 +35,21 @@ class ProductController {
       message: 'Product record successfully created'
     });
   }
+
+  /**
+   * Get all products in the store
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {object} JSON object representing success message
+   * @memberof ProductController
+   */
+  static getAll(req, res) {
+    return res.status(200).json({
+      products,
+      message: 'All products successfully served'
+    });
+  }
 }
 
 export default ProductController;
