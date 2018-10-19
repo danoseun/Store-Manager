@@ -111,7 +111,6 @@ class UserValidator {
     let value;
     if (typeof UserId === 'string') {
       value = Number(UserId);
-      console.log('1', typeof value);
       if (Number.isNaN(value)) {
         return res.status(400).json({
           status: 'Fail',

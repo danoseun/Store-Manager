@@ -15,9 +15,7 @@ class VerifyRole {
  */
   static isAdmin(req, res, next) {
     const { UserId } = req.body;
-    console.log('2', typeof UserId);
     const foundUser = users.find(user => user.userId === UserId);
-    console.log('3', typeof foundUser);
     if (foundUser) {
       if (foundUser.role === 'admin') {
         return next();
