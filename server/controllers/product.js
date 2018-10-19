@@ -18,6 +18,7 @@ class ProductController {
       productname, description, category, imageurl, quantity, unitprice
     } = req.body;
     const id = products[products.length - 1].id + 1;
+    const today = new Date();
     const newProduct = {
       id,
       productname,
@@ -25,7 +26,8 @@ class ProductController {
       category,
       imageurl,
       quantity,
-      unitprice
+      unitprice,
+      today
     };
     products.push(newProduct);
     return res.status(201).json({
