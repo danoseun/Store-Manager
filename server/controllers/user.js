@@ -15,9 +15,9 @@ class UserController {
      */
   static signUp(req, res) {
     const newUser = {
-      id: users.length + 1,
+      userId: users.length + 1,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
     };
     users.push(newUser);
     return res.status(201).json({
