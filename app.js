@@ -1,7 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import userRouter from './server/routes/user';
+import router from './server/routes';
 
 // Create a top level instance of express
 const app = express();
@@ -11,8 +11,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Declare subroutes
+// Destructure and declare subroutes
+const { userRouter, productRouter } = router;
 app.use('/api/v1', userRouter);
+app.use('/api/v1', productRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
