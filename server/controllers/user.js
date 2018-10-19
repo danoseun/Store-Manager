@@ -1,4 +1,4 @@
-import users from '../dummyDb/user';
+import users from '../dummyDb';
 
 /**
  * Class representing UserController
