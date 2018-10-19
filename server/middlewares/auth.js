@@ -1,4 +1,4 @@
-import users from '../dummyDb';
+import { users } from '../dummyDb';
 
 /**
  * Class representing User Authorization

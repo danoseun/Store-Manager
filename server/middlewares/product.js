@@ -1,4 +1,4 @@
-import products from '../dummyDb';
+import { products } from '../dummyDb';
 
 /**
  * Class representing Product Validations

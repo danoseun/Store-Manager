@@ -1,11 +1,12 @@
 import express from 'express';
-import UserController from '../controllers/user';
+import controllers from '../controllers';
 import middlewares from '../middlewares';
 
+const { UserController } = controllers;
 const { signUp, login } = UserController;
 const { UserValidator, VerifyRole } = middlewares;
 const { signUpValidator, loginValidator } = UserValidator;
-const { isAdmin, isAttendant } = VerifyRole;
+const { isAdmin } = VerifyRole;
 
 const userRouter = express.Router();
 
