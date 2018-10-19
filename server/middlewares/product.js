@@ -273,7 +273,7 @@ class ProductValidator {
       return res.status(400).json({
         status: 'Fail',
         message: 'Invalid price character detected. Input positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"menu": "string", "description": "string", "category": "string", "imageURL": "string", "quantity", "string", "price": "string"}'
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
 
@@ -282,7 +282,7 @@ class ProductValidator {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be undefined',
-        sampleCredentials: '{"menu": "string", "description": "string", "category": "string", "imageURL": "string", "quantity", "string", "price": "string"}'
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
 
@@ -290,7 +290,7 @@ class ProductValidator {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be empty',
-        sampleCredentials: '{"menu": "string", "description": "string", "category": "string", "imageURL": "string", "quantity", "string", "price": "string"}'
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
     let value;
@@ -300,7 +300,7 @@ class ProductValidator {
         return res.status(400).json({
           status: 'Fail',
           message: 'UserId should be a valid number',
-          sampleCredentials: '{"menu": "string", "description": "string", "category": "string", "imageURL": "string", "quantity", "string", "price": "string"}'
+          sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
         });
       }
     }
