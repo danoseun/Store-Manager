@@ -12,9 +12,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Destructure and declare subroutes
-const { userRouter, productRouter } = router;
+const { userRouter, productRouter, defaultRouter } = router;
 app.use('/api/v1', userRouter);
 app.use('/api/v1', productRouter);
+app.use('/', defaultRouter);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
