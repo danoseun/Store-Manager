@@ -6,7 +6,8 @@ const products = [
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200'
+    unitprice: '200',
+    today: new Date()
   },
 
   {
@@ -16,7 +17,8 @@ const products = [
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: 100
+    unitprice: 100,
+    today: new Date()
   },
 
   {
@@ -26,7 +28,8 @@ const products = [
     category: 'Wears',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '1000'
+    unitprice: '1000',
+    today: new Date()
   },
 ];
 

@@ -66,6 +66,32 @@ class ProductController {
       message: 'Product successfully found'
     });
   }
+
+  /**
+   * Modify product record
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {object} - JSON object representing success
+   * @memberof ProductController
+   */
+  static updateProduct(req, res) {
+    const { foundProduct } = req.body;
+    const {
+      productname, description, category, imageurl, quantity, unitprice
+    } = req.body;
+
+    foundProduct.productname = productname;
+    foundProduct.description = description;
+    foundProduct.category = category;
+    foundProduct.imageurl = imageurl;
+    foundProduct.quantity = quantity;
+    foundProduct.unitprice = unitprice;
+    return res.status(205).json({
+      foundProduct,
+      message: 'product record updated successfully'
+    });
+  }
 }
 
 export default ProductController;
