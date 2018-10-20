@@ -50,6 +50,22 @@ class ProductController {
       message: 'All products successfully served'
     });
   }
+
+  /**
+   * Get one product by its ID
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @returns {object} {object} JSON object representing success message
+   * @memberof ProductController
+   */
+  static getOne(req, res) {
+    const { foundProduct } = req.body;
+    return res.status(200).json({
+      foundProduct,
+      message: 'Product successfully found'
+    });
+  }
 }
 
 export default ProductController;
