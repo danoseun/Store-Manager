@@ -1,4 +1,4 @@
-import users from '../dummyDb';
+import { users } from '../dummyDb';
 
 /**
  * Class representing User Validations
@@ -21,6 +21,13 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
       });
     }
+    if (typeof email !== 'string') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Email should be a string',
+        sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
+      });
+    }
     email = email.toLowerCase().trim();
     if (email === '') {
       return res.status(400).json({
@@ -29,13 +36,7 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
       });
     }
-    if (typeof email !== 'string') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Email should be a string',
-        sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
-      });
-    }
+    
     /* eslint-disable no-useless-escape */
     const emailVerifier = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if (!emailVerifier.test(email)) {
@@ -66,6 +67,13 @@ class UserValidator {
       return res.status(400).json({
         status: 'Fail',
         message: 'Password cannot be undefined',
+        sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
+      });
+    }
+    if (typeof password !== 'string') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Password should be a string',
         sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
       });
     }
@@ -149,13 +157,6 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string"}'
       });
     }
-    if (email === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Please supply your email',
-        sampleCredentials: '{"email": "string" , "password": "string"}'
-      });
-    }
     if (typeof email !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -163,6 +164,14 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string"}'
       });
     }
+    if (email === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Please supply your email',
+        sampleCredentials: '{"email": "string" , "password": "string"}'
+      });
+    }
+    
     email = email.toLowerCase().trim();
     const foundUser = users.find(user => user.email === email);
     if (!foundUser) {
