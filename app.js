@@ -15,10 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const {
   defaultRouter, userRouter, productRouter, salesRouter
 } = router;
-app.use('/', defaultRouter);
 app.use('/api/v1', userRouter);
 app.use('/api/v1', productRouter);
 app.use('/api/v1', salesRouter);
+app.use('/', defaultRouter);
 
 
 const port = process.env.PORT || 4000;
