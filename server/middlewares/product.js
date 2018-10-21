@@ -67,7 +67,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
     productname = productname.toLowerCase().trim();
     if (productname.length < 2 || productname > 50) {
       return res.status(400).json({
@@ -115,7 +114,7 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
+
     description = description.toLowerCase().trim();
     if (description.length < 10 || description.length > 100) {
       return res.status(400).json({
@@ -154,7 +153,7 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
+
     category = category.toLowerCase().trim();
     const characterCheckerr = /^[A-Za-z]+$/;
     if (!characterCheckerr.test(category)) {
@@ -193,7 +192,7 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
+
     // Validate for valid image extensions jpeg, gif, png and gif(database)
 
     // Quantity
@@ -218,7 +217,7 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
+
     quantity = quantity.trim();
     if (quantity.length < 1 || quantity.length > 4) {
       return res.status(400).json({
@@ -265,7 +264,7 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    
+
     unitprice = unitprice.trim();
     if (unitprice < 1) {
       return res.status(400).json({
