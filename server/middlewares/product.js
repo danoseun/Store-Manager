@@ -53,17 +53,17 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (productname === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Product should have a name',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof productname !== 'string') {
       return res.status(400).json({
         status: 'Fail',
         message: 'product name should be a string',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+    if (productname === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Product should have a name',
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
@@ -100,13 +100,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (description === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Type a brief description for the product',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof description !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -114,6 +107,14 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
+    if (description === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Type a brief description for the product',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+
     description = description.toLowerCase().trim();
     if (description.length < 10 || description.length > 100) {
       return res.status(400).json({
@@ -138,13 +139,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (category === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Category cannot be empty',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof category !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -152,6 +146,14 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
+    if (category === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Category cannot be empty',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+
     category = category.toLowerCase().trim();
     const characterCheckerr = /^[A-Za-z]+$/;
     if (!characterCheckerr.test(category)) {
@@ -176,13 +178,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (imageurl === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Enter avalid url for this product',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof imageurl !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -190,6 +185,14 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", "quantity: "number", "unitprice": "number"}'
       });
     }
+    if (imageurl === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Enter avalid url for this product',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+
     // Validate for valid image extensions jpeg, gif, png and gif(database)
 
     // Quantity
@@ -200,13 +203,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (quantity === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Quantity cannot be empty. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof quantity !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -214,6 +210,14 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
+    if (quantity === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'Quantity cannot be empty. Input a positive integer greater than zero and of length 1 to 4',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+
     quantity = quantity.trim();
     if (quantity.length < 1 || quantity.length > 4) {
       return res.status(400).json({
@@ -246,13 +250,6 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
-    if (unitprice === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'unitprice cannot empty. Input a positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
-      });
-    }
     if (typeof unitprice !== 'string') {
       return res.status(400).json({
         status: 'Fail',
@@ -260,6 +257,14 @@ class ProductValidator {
         sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
       });
     }
+    if (unitprice === '') {
+      return res.status(400).json({
+        status: 'Fail',
+        message: 'unitprice cannot empty. Input a positive integer greater than zero but less than length of 10',
+        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+      });
+    }
+
     unitprice = unitprice.trim();
     if (unitprice < 1) {
       return res.status(400).json({

@@ -36,7 +36,6 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string", "UserId": number}'
       });
     }
-    
     /* eslint-disable no-useless-escape */
     const emailVerifier = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
     if (!emailVerifier.test(email)) {
@@ -171,7 +170,7 @@ class UserValidator {
         sampleCredentials: '{"email": "string" , "password": "string"}'
       });
     }
-    
+
     email = email.toLowerCase().trim();
     const foundUser = users.find(user => user.email === email);
     if (!foundUser) {
