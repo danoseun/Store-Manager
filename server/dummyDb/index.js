@@ -2,8 +2,10 @@
 
 import users from './user';
 import products from './product';
+import sales from './sale';
 
 export {
   users,
-  products
+  products,
+  sales
 };
