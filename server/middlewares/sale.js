@@ -1,7 +1,7 @@
 import { products } from '../dummyDb';
 
 /**
- * Class representing Sale Validation
+ * Class representing Sale Helper
  * @class SaleHelper
  */
 class SaleHelper {
