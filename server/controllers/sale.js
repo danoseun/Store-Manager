@@ -83,6 +83,29 @@ class SalesController {
       });
     }
   }
+
+  /**
+   * Create Sale Record
+   * @static
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @return {object} JSON representing success message
+   */
+  static createSale(req, res) {
+    const { cart, total, UserId } = req.body;
+    const id = sales.length + 1;
+    const newSale = {
+      id,
+      UserId,
+      cart,
+      total
+    };
+    sales.push(newSale);
+    return res.status(201).json({
+      message: 'Sale record created successfully',
+      newSale
+    });
+  }
 }
 
 export default SalesController;

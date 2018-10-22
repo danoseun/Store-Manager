@@ -17,7 +17,7 @@ const products = [
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: 100,
+    unitprice: '100',
     today: new Date()
   },
 
