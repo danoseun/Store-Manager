@@ -32,7 +32,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -45,7 +44,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -58,7 +56,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -71,7 +68,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -84,7 +80,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -98,7 +93,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -111,7 +105,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -124,7 +117,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -137,7 +129,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -150,7 +141,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -164,7 +154,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -177,7 +166,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -190,7 +178,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -203,7 +190,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -216,7 +202,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -230,7 +215,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -243,7 +227,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -256,7 +239,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -270,7 +252,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -283,7 +264,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -296,7 +276,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -309,7 +288,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -322,7 +300,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -335,7 +312,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -349,7 +325,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -362,7 +337,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -375,7 +349,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -388,7 +361,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -401,7 +373,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -415,7 +386,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -428,7 +398,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -441,7 +410,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -523,7 +491,6 @@ describe('Test for (METHOD)/ Products route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
