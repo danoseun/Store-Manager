@@ -69,7 +69,6 @@ describe('Test for user route', () => {
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
           expect(res.body.message).to.equal('Email cannot be undefined');
-          res.body.sampleCredentials.should.be.a('string');
           done();
         });
     });
@@ -81,8 +80,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Password cannot be undefined');
           done();
         });
     });
@@ -94,8 +92,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email field cannot be empty');
           done();
         });
     });
@@ -107,8 +104,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email should be a string');
           done();
         });
     });
@@ -120,8 +116,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email format is invalid');
           done();
         });
     });
@@ -133,8 +128,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email should be 10 to 50 characters long');
           done();
         });
     });
@@ -146,8 +140,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email should be 10 to 50 characters long');
           done();
         });
     });
@@ -159,8 +152,7 @@ describe('Test for user route', () => {
           res.should.have.status(409);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Email already exists!');
           done();
         });
     });
@@ -172,8 +164,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Password should be a string');
           done();
         });
     });
@@ -185,8 +176,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Password should be 8 to 20 characters long');
           done();
         });
     });
@@ -198,8 +188,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Password should be 8 to 20 characters long');
           done();
         });
     });
@@ -211,8 +200,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId cannot be undefined');
           done();
         });
     });
@@ -224,8 +212,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId cannot be empty');
           done();
         });
     });
@@ -237,8 +224,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId should be a valid number');
           done();
         });
     });
@@ -250,7 +236,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('You are not authorized to visit this page');
           done();
         });
     });
@@ -262,7 +248,7 @@ describe('Test for user route', () => {
           res.should.have.status(422);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Please login with the correct details if you have been signed up by the admin');
           done();
         });
     });
@@ -274,7 +260,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Password field cannot be empty');
           done();
         });
     });
@@ -286,7 +272,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Password should be a string');
           done();
         });
     });
@@ -301,7 +287,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Email cannot be undefined');
           done();
         });
     });
@@ -313,7 +299,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Please supply your email');
           done();
         });
     });
@@ -325,7 +311,7 @@ describe('Test for user route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Email should be a string');
           done();
         });
     });
@@ -337,7 +323,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Authentication failed');
           done();
         });
     });
@@ -349,7 +335,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Pasword cannot be undefined');
           done();
         });
     });
@@ -361,7 +347,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Password cannot be empty');
           done();
         });
     });
@@ -373,7 +359,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Authentication unsuccessful');
           done();
         });
     });
