@@ -31,8 +31,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Product name cannot be undefined');
           done();
         });
     });
@@ -44,8 +43,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Product name should be a string');
           done();
         });
     });
@@ -57,8 +55,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Product should have a name');
           done();
         });
     });
@@ -70,8 +67,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Ensure that the product name is between 2 to 50 characters long');
           done();
         });
     });
@@ -83,8 +79,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Product name should contain alpahbets only');
           done();
         });
     });
@@ -97,8 +92,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Description is required');
           done();
         });
     });
@@ -110,8 +104,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Description should be a string');
           done();
         });
     });
@@ -123,8 +116,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Type a brief description for the product');
           done();
         });
     });
@@ -136,8 +128,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Description should be between 10 and 100 characters for brevity sake');
           done();
         });
     });
@@ -149,8 +140,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Description should contain characters only');
           done();
         });
     });
@@ -163,8 +153,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Category cannot be undefined');
           done();
         });
     });
@@ -176,8 +165,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Category should be a string');
           done();
         });
     });
@@ -189,8 +177,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Category cannot be empty');
           done();
         });
     });
@@ -202,8 +189,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Category should contain alphabets only');
           done();
         });
     });
@@ -215,8 +201,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Category should be between 3 and 15 characters long');
           done();
         });
     });
@@ -229,8 +214,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Image URL cannot be undefined');
           done();
         });
     });
@@ -242,8 +226,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Image URL should be a string');
           done();
         });
     });
@@ -255,8 +238,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Enter a valid url for this product');
           done();
         });
     });
@@ -269,8 +251,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Quantity is undefined. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -282,8 +263,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Quantity should be a string. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -295,8 +275,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Quantity cannot be empty. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -308,8 +287,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Invalid quantity length. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -321,8 +299,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Invalid quantity. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -334,8 +311,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Invalid quantity character detected. Input a positive integer greater than zero and of length 1 to 4');
           done();
         });
     });
@@ -348,8 +324,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Price is undefined. Input a positive integer greater than zero but less than length of 10');
           done();
         });
     });
@@ -361,8 +336,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('unitprice should be a string. Input a positive integer greater than zero but less than length of 10');
           done();
         });
     });
@@ -374,8 +348,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('unitprice cannot empty. Input a positive integer greater than zero but less than length of 10');
           done();
         });
     });
@@ -387,8 +360,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Invalid unitprice. Input positive a integer greater than zero but less than length of 10');
           done();
         });
     });
@@ -400,8 +372,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Invalid price character detected. Input positive integer greater than zero but less than length of 10');
           done();
         });
     });
@@ -414,8 +385,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId cannot be undefined');
           done();
         });
     });
@@ -427,8 +397,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId cannot be empty');
           done();
         });
     });
@@ -440,8 +409,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('UserId should be a valid number');
           done();
         });
     });
@@ -453,11 +421,11 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(422);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Please login with the correct details if you have been signed up by the admin');
           done();
         });
     });
-    // create Products
+    // create Products.
     it('Should return 201 status code successful creation of product', (done) => {
       const newLength = products.length + 1;
       chai.request(app)
@@ -467,7 +435,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product record successfully created');
           expect(products).to.have.length(newLength);
           done();
         });
@@ -481,7 +449,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product record successfully created');
           expect(products).to.have.length(newLength);
           done();
         });
@@ -495,7 +463,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product record successfully created');
           expect(products).to.have.length(newLength);
           done();
         });
@@ -509,7 +477,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product record successfully created');
           expect(products).to.have.length(newLength);
           done();
         });
@@ -522,8 +490,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(409);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
-          res.body.sampleCredentials.should.be.a('string');
+          expect(res.body.message).to.equal('Product name already exists, consider updating it instead');
           done();
         });
     });
@@ -536,7 +503,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(400);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Oops!, Invalid URL');
           done();
         });
     });
@@ -547,7 +514,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(404);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('This product does not exist');
           done();
         });
     });
@@ -559,7 +526,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('foundProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product successfully found');
           expect(products).to.have.length(sameLength);
           done();
         });
@@ -572,7 +539,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('products');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('All products successfully served');
           expect(products).to.have.length(sameLength);
           done();
         });
@@ -588,7 +555,7 @@ describe('Test for (METHOD)/ Products route', () => {
           res.should.have.status(205);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('foundProduct');
-          res.body.message.should.be.a('string');
+          expect(res.body.message).to.equal('Product record updated successfully');
           expect(products).to.have.length(sameLength);
           done();
         });

@@ -5,15 +5,15 @@ const sales = [
     items: [
       {
         productId: 5,
-        productname: 'Headphone',
+        productName: 'Headphone',
         quantity: 2,
-        unitprice: 750
+        unitPrice: 750
       },
       {
         productId: 6,
-        productname: 'Earpiece',
+        productName: 'Earpiece',
         quantity: 3,
-        unitprice: 500
+        unitPrice: 500
       }
     ],
     totalAmount: 1500,
@@ -27,15 +27,15 @@ const sales = [
     items: [
       {
         productId: 6,
-        productname: 'Canvas',
+        productName: 'Canvas',
         quantity: 2,
-        unitprice: 750
+        unitPrice: 750
       },
       {
         productId: 6,
-        productname: 'Denimsweater',
+        productName: 'Denimsweater',
         quantity: 3,
-        unitprice: 500
+        unitPrice: 500
       }
     ],
     totalAmount: 1500,

@@ -15,11 +15,11 @@ class SaleHelper {
      */
   static SalesHelper(req, res, next) {
     /* eslint-disable */
-    let { UserId, items } = req.body;
-    if (UserId === undefined || UserId === '') {
+    let { userId, items } = req.body;
+    if (userId === undefined || userId === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'UserId should be supllied'
+        message: 'userId should be supllied'
       });
     }
     let cart = [];
@@ -36,15 +36,15 @@ class SaleHelper {
                 message: 'Product not found'
             });
         }
-        value.productName = foundProduct.productname;
-        value.amount = Number(foundProduct.unitprice) * Number(value.quantity);
+        value.productName = foundProduct.productName;
+        value.amount = Number(foundProduct.unitPrice) * Number(value.quantity);
 
         total += value.amount;
         cart.push(({value}));
     });
     req.body.cart = cart;
     req.body.total = total;
-    req.body.UserId = UserId;
+    req.body.userId = userId;
     return next();
  }
 }

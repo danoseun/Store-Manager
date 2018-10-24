@@ -13,7 +13,7 @@ class ProductValidator {
      * @returns {object} JSON representing the failure message
      * @memberof ProductValidator
      */
-  static getOneProduct(req, res, next) {
+  static findOneProduct(req, res, next) {
     const { productId } = req.params;
     if (!Number(productId)) {
       return res.status(400).json({
@@ -43,52 +43,46 @@ class ProductValidator {
   static productInputChecker(req, res, next) {
     /* eslint-disable prefer-const */
     let {
-      productname, description, category, imageurl, quantity, unitprice, UserId
+      productName, description, category, imageurl, quantity, unitPrice, userId
     } = req.body;
     // productName
-    if (productname === undefined) {
+    if (productName === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Product name cannot be undefined',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Product name cannot be undefined'
       });
     }
-    if (typeof productname !== 'string') {
+    if (typeof productName !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'product name should be a string',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Product name should be a string'
       });
     }
-    if (productname === '') {
+    if (productName === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Product should have a name',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Product should have a name'
       });
     }
-    productname = productname.toLowerCase().trim();
-    if (productname.length < 2 || productname > 50) {
+    productName = productName.toLowerCase().trim();
+    if (productName.length < 2 || productName > 50) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Ensure that the product name is between 2 to 50 characters long',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Ensure that the product name is between 2 to 50 characters long'
       });
     }
     const characterChecker = /^[A-Za-z ]+$/;
-    if (!characterChecker.test(productname)) {
+    if (!characterChecker.test(productName)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Product name should contain alpahbets only',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Product name should contain alpahbets only'
       });
     }
-    const foundProductName = products.find(product => product.productname === productname);
+    const foundProductName = products.find(product => product.productName === productName);
     if (foundProductName) {
       return res.status(409).json({
         status: 'Fail',
-        message: 'Product name already exists, consider updating it instead',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Product name already exists, consider updating it instead'
       });
     }
 
@@ -96,22 +90,19 @@ class ProductValidator {
     if (description === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Description is required',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Description is required'
       });
     }
     if (typeof description !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Description should be a string',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Description should be a string'
       });
     }
     if (description === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Type a brief description for the product',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Type a brief description for the product'
       });
     }
 
@@ -119,15 +110,13 @@ class ProductValidator {
     if (description.length < 10 || description.length > 100) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Description should be between 10 and 100 characters for brevity sake',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Description should be between 10 and 100 characters for brevity sake'
       });
     }
     if (!characterChecker.test(description)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Description should contain characters only',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Description should contain characters only'
       });
     }
 
@@ -135,22 +124,19 @@ class ProductValidator {
     if (category === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Category cannot be undefined',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Category cannot be undefined'
       });
     }
     if (typeof category !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Category should be a string',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Category should be a string'
       });
     }
     if (category === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Category cannot be empty',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Category cannot be empty'
       });
     }
 
@@ -159,37 +145,32 @@ class ProductValidator {
     if (!characterCheckerr.test(category)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Category should contain alphabets only',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Category should contain alphabets only'
       });
     }
     if (category.length < 3 || category.length > 15) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Category should be between 3 and 15 characters long',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Category should be between 3 and 15 characters long'
       });
     }
     // ImageUrl
     if (imageurl === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Image URL cannot be undefined',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Image URL cannot be undefined'
       });
     }
     if (typeof imageurl !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Image URL should be a string',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", "quantity: "number", "unitprice": "number"}'
+        message: 'Image URL should be a string'
       });
     }
     if (imageurl === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Enter avalid url for this product',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Enter a valid url for this product'
       });
     }
 
@@ -199,22 +180,19 @@ class ProductValidator {
     if (quantity === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Quantity is undefined. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Quantity is undefined. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
     if (typeof quantity !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Quantity should be a string. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Quantity should be a string. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
     if (quantity === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Quantity cannot be empty. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Quantity cannot be empty. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
 
@@ -222,100 +200,89 @@ class ProductValidator {
     if (quantity.length < 1 || quantity.length > 4) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Invalid quantity length. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Invalid quantity length. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
     if (quantity < 1) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Invalid quantity. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Invalid quantity. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
     const validQuantityCharacter = /^[0-9]+$/;
     if (!validQuantityCharacter.test(quantity)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Invalid quantity character detected. Input a positive integer greater than zero and of length 1 to 4',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Invalid quantity character detected. Input a positive integer greater than zero and of length 1 to 4'
       });
     }
 
     // Price
-    if (unitprice === undefined) {
+    if (unitPrice === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Price is undefined. Input a positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Price is undefined. Input a positive integer greater than zero but less than length of 10'
       });
     }
-    if (typeof unitprice !== 'string') {
+    if (typeof unitPrice !== 'string') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'unitprice should be a string. Input a positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'unitprice should be a string. Input a positive integer greater than zero but less than length of 10'
       });
     }
-    if (unitprice === '') {
+    if (unitPrice === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'unitprice cannot empty. Input a positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'unitprice cannot empty. Input a positive integer greater than zero but less than length of 10'
       });
     }
 
-    unitprice = unitprice.trim();
-    if (unitprice < 1) {
+    unitPrice = unitPrice.trim();
+    if (unitPrice < 1) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Invalid unitprice. Input positive a integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Invalid unitprice. Input positive a integer greater than zero but less than length of 10'
       });
     }
     const validPriceChecker = /^([0-9]){1,6}$/;
-    if (!validPriceChecker.test(unitprice)) {
+    if (!validPriceChecker.test(unitPrice)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Invalid price character detected. Input positive integer greater than zero but less than length of 10',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'Invalid price character detected. Input positive integer greater than zero but less than length of 10'
       });
     }
 
     // UserId validations
-    if (UserId === undefined) {
+    if (userId === undefined) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'UserId cannot be undefined',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'UserId cannot be undefined'
       });
     }
 
-    if (UserId === '') {
+    if (userId === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'UserId cannot be empty',
-        sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+        message: 'UserId cannot be empty'
       });
     }
     let value;
-    if (typeof UserId === 'string') {
-      value = Number(UserId);
+    if (typeof userId === 'string') {
+      value = Number(userId);
       if (Number.isNaN(value)) {
         return res.status(400).json({
           status: 'Fail',
-          message: 'UserId should be a valid number',
-          sampleCredentials: '{"productname": "string" , "description": "string", "category": "string", "imageurl": "string", quantity: "number", "unitprice": "number"}'
+          message: 'UserId should be a valid number'
         });
       }
     }
-    req.body.productname = productname;
+    req.body.productName = productName;
     req.body.description = description;
     req.body.category = category;
     req.body.imageurl = imageurl;
     req.body.quantity = quantity;
-    req.body.unitprice = unitprice;
-    req.body.UserId = value;
+    req.body.unitPrice = unitPrice;
+    req.body.userId = value;
     return next();
   }
 }
