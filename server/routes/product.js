@@ -15,6 +15,6 @@ const productRouter = express.Router();
 productRouter.post('/products', productInputChecker, isAdmin, createProduct);
 productRouter.get('/products', getAllProducts);
 productRouter.get('/products/:productId', findOneProduct, getOneProduct);
-productRouter.put('/products/:productId', productInputChecker, isAdmin, getOneProduct, updateProduct);
+productRouter.put('/products/:productId', productInputChecker, isAdmin, findOneProduct, updateProduct);
 
 export default productRouter;
