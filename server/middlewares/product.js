@@ -13,7 +13,7 @@ class ProductValidator {
      * @returns {object} JSON representing the failure message
      * @memberof ProductValidator
      */
-  static getOneProduct(req, res, next) {
+  static findOneProduct(req, res, next) {
     const { productId } = req.params;
     if (!Number(productId)) {
       return res.status(400).json({

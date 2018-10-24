@@ -44,7 +44,7 @@ class ProductController {
    * @returns {object} JSON object representing success message
    * @memberof ProductController
    */
-  static getAll(req, res) {
+  static getAllProducts(req, res) {
     return res.status(200).json({
       products,
       message: 'All products successfully served'
@@ -59,7 +59,7 @@ class ProductController {
    * @returns {object} {object} JSON object representing success message
    * @memberof ProductController
    */
-  static getOne(req, res) {
+  static getOneProduct(req, res) {
     const { foundProduct } = req.body;
     return res.status(200).json({
       foundProduct,
