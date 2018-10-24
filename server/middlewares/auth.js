@@ -14,8 +14,8 @@ class VerifyRole {
  * @returns {object} JSON representing the failure message
  */
   static isAdmin(req, res, next) {
-    const { UserId } = req.body;
-    const foundUser = users.find(user => user.userId === UserId);
+    const { userId } = req.body;
+    const foundUser = users.find(user => user.id === userId);
     if (foundUser) {
       if (foundUser.role === 'admin') {
         return next();
@@ -40,8 +40,8 @@ class VerifyRole {
  * @returns {object} JSON representing the failure message
  */
   static isAttendant(req, res, next) {
-    const { UserId } = req.body;
-    const foundUser = users.find(user => user.userId === UserId);
+    const { userId } = req.body;
+    const foundUser = users.find(user => user.id === userId);
     if (foundUser) {
       if (foundUser.role === 'attendant') {
         return next();

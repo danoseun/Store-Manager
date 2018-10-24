@@ -15,7 +15,7 @@ class UserController {
      */
   static signUp(req, res) {
     const newUser = {
-      userId: users.length + 1,
+      id: users.length + 1,
       email: req.body.email,
       password: req.body.password,
     };

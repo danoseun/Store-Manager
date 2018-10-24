@@ -1,48 +1,48 @@
 export const validProductData = [
   {
-    productname: 'Mayonaisse',
+    productName: 'Mayonaisse',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   {
-    productname: 'MayonnaisBama',
+    productName: 'MayonnaisBama',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   {
-    productname: 'Bamsonnaise',
+    productName: 'Bamsonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   {
-    productname: 'Valuebread',
+    productName: 'Valuebread',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   {
-    productname: 'ValueDrink',
+    productName: 'ValueDrink',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
@@ -53,349 +53,349 @@ export const inValidProductNameData = [
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // product name not a string 1
   {
-    productname: 23,
+    productName: 23,
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Empty product name 2
   {
-    productname: '',
+    productName: '',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid product name length 3
   {
-    productname: 'M',
+    productName: 'M',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid Character in product name 4
   {
-    productname: 'Mayonn34578',
+    productName: 'Mayonn34578',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Found product name 5(**NOT USED**)
   {
-    productname: 'Mayonnaise',
+    productName: 'Mayonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
 export const inValidDescriptionData = [
   // Undefined description 0
   {
-    productname: 'Mayonnaisa',
+    productName: 'Mayonnaisa',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Description is not a string 1
   {
-    productname: 'Mayonnaisb',
+    productName: 'Mayonnaisb',
     description: 45,
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Description is empty 2
   {
-    productname: 'Mayonnaisc',
+    productName: 'Mayonnaisc',
     description: '',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid description length 3
   {
-    productname: 'Mayonnaisd',
+    productName: 'Mayonnaisd',
     description: 'Nice spr',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid character 4
   {
-    productname: 'Mayonnaisee',
+    productName: 'Mayonnaisee',
     description: 'Nice spread over 1991',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
 export const inValidCategoryData = [
   // Undefined category 0
   {
-    productname: 'Mayonnaisf',
+    productName: 'Mayonnaisf',
     description: 'Nice spread over bread',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Category not a string 1
   {
-    productname: 'Mayonnaisg',
+    productName: 'Mayonnaisg',
     description: 'Nice spread over bread',
     category: 56,
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Category empty 2
   {
-    productname: 'Mayonnaish',
+    productName: 'Mayonnaish',
     description: 'Nice spread over bread',
     category: '',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Category invalid characters 3
   {
-    productname: 'Mayonnaisi',
+    productName: 'Mayonnaisi',
     description: 'Nice spread over bread',
     category: 'Comestible45',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Inavlid category length 4
   {
-    productname: 'Mayonnaisj',
+    productName: 'Mayonnaisj',
     description: 'Nice spread over bread',
     category: 'Co',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
 export const inValidImageURLData = [
   // Undefined ImageURL 0
   {
-    productname: 'Mayonnaisk',
+    productName: 'Mayonnaisk',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Image URL not a string 1
   {
-    productname: 'Mayonnaisl',
+    productName: 'Mayonnaisl',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 5,
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Image URL empty 2
   {
-    productname: 'Mayonnaism',
+    productName: 'Mayonnaism',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: '',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
 export const inValidQuantityData = [
   // Undefined quantity 0
   {
-    productname: 'Mayonnaisn',
+    productName: 'Mayonnaisn',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Quantity not string 1
   {
-    productname: 'Mayonnaiso',
+    productName: 'Mayonnaiso',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: [20],
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Quantity empty 2
   {
-    productname: 'Mayonnaisp',
+    productName: 'Mayonnaisp',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid quantity length 3
   {
-    productname: 'Mayonnaisq',
+    productName: 'Mayonnaisq',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '208765',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Quantity less than 1 (4)
   {
-    productname: 'Mayonnaisr',
+    productName: 'Mayonnaisr',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '0',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
   // Invalid quantity character detected 5
   {
-    productname: 'Mayonnaisser',
+    productName: 'Mayonnaisser',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20px',
-    unitprice: '200',
-    UserId: '1'
+    unitPrice: '200',
+    userId: '1'
   },
 ];
 
 export const inValidUnitPriceData = [
-  // Undefined unitprice 0
+  // Undefined unitPrice 0
   {
-    productname: 'Mayonnarees',
+    productName: 'Mayonnarees',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    UserId: '1'
+    userId: '1'
   },
   // Not a string 1
   {
-    productname: 'Mayonnaisgang',
+    productName: 'Mayonnaisgang',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: 200,
-    UserId: '1'
+    unitPrice: 200,
+    userId: '1'
   },
   // Empty 2
   {
-    productname: 'Mayonnaisdem',
+    productName: 'Mayonnaisdem',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '',
-    UserId: '1'
+    unitPrice: '',
+    userId: '1'
   },
   // Unit price < 1 (3)
   {
-    productname: 'Bamabama',
+    productName: 'Bamabama',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '0',
-    UserId: '1'
+    unitPrice: '0',
+    userId: '1'
   },
   // Invalid Price (4)
   {
-    productname: 'Newproduct',
+    productName: 'Newproduct',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '23456783456',
-    UserId: '1'
+    unitPrice: '23456783456',
+    userId: '1'
   },
 ];
 
 export const inValidUserIdData = [
   // Undefined 0
   {
-    productname: 'Ourayonnaise',
+    productName: 'Ourayonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200'
+    unitPrice: '200'
   },
-  // UserId empty 1
+  // userId empty 1
   {
-    productname: 'Mayonnaise',
+    productName: 'Mayonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: ''
+    unitPrice: '200',
+    userId: ''
   },
-  // UserId NaN 2
+  // userId NaN 2
   {
-    productname: 'Bayonnaise',
+    productName: 'Bayonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: '1qd'
+    unitPrice: '200',
+    userId: '1qd'
   },
-  // UserID not a string 3
+  // userID not a string 3
   {
-    productname: 'Vayonnaise',
+    productName: 'Vayonnaise',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    UserId: 1
+    unitPrice: '200',
+    userId: 1
   },
 ];

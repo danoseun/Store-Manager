@@ -14,8 +14,8 @@ class SalesController {
      * @memberof SalesController
      */
   static getAll(req, res) {
-    const { UserId } = req.query;
-    const foundUser = users.find(user => user.userId === Number(UserId));
+    const { userId } = req.query;
+    const foundUser = users.find(user => user.id === Number(userId));
     if (foundUser && foundUser.role === 'admin') {
       return res.status(200).json({
         sales,
@@ -43,20 +43,20 @@ class SalesController {
    */
   static getOne(req, res) {
     const { saleId } = req.params;
-    const { UserId } = req.query;
+    const { userId } = req.query;
     if (!Number(saleId)) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Oops! Inavlid URL'
       });
     }
-    if (!Number(UserId)) {
+    if (!Number(userId)) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Inavlid credentials'
       });
     }
-    const foundUser = users.find(user => user.userId === Number(UserId));
+    const foundUser = users.find(user => user.id === Number(userId));
     const foundSale = sales.find(sale => sale.id === Number(saleId));
     if (!foundUser) {
       return res.status(400).json({
@@ -71,7 +71,7 @@ class SalesController {
       });
     }
     if (foundUser && foundSale) {
-      if (foundUser.role === 'admin' || foundSale.userId === Number(UserId)) {
+      if (foundUser.role === 'admin' || foundSale.userId === Number(userId)) {
         return res.status(200).json({
           foundSale,
           message: 'Sale fetched'
@@ -92,11 +92,11 @@ class SalesController {
    * @return {object} JSON representing success message
    */
   static createSale(req, res) {
-    const { cart, total, UserId } = req.body;
+    const { cart, total, userId } = req.body;
     const id = sales.length + 1;
     const newSale = {
       id,
-      UserId,
+      userId,
       cart,
       total
     };

@@ -1,35 +1,35 @@
 const products = [
   {
     id: 1,
-    productname: 'Mayonaisse',
+    productName: 'Mayonaisse',
     description: 'Nice spread over bread',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '200',
-    today: new Date()
+    unitPrice: '200',
+    time: new Date()
   },
 
   {
     id: 2,
-    productname: 'Banana',
+    productName: 'Banana',
     description: 'Fresh fruits at its best',
     category: 'Comestibles',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '100',
-    today: new Date()
+    unitPrice: '100',
+    time: new Date()
   },
 
   {
     id: 3,
-    productname: 'Cardigans',
+    productName: 'Cardigans',
     description: 'Soft on the skin but hard on cold',
     category: 'Wears',
     imageurl: 'https://www.example.com',
     quantity: '20',
-    unitprice: '1000',
-    today: new Date()
+    unitPrice: '1000',
+    time: new Date()
   },
 ];
 

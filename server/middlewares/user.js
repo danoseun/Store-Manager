@@ -13,7 +13,7 @@ class UserValidator {
     */
   static signUpValidator(req, res, next) {
     /* eslint-disable prefer-const */
-    let { email, password, UserId } = req.body;
+    let { email, password, userId } = req.body;
     if (email === undefined) {
       return res.status(400).json({
         status: 'Fail',
@@ -89,22 +89,22 @@ class UserValidator {
     }
 
     // UserId validations
-    if (UserId === undefined) {
+    if (userId === undefined) {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be undefined'
       });
     }
 
-    if (UserId === '') {
+    if (userId === '') {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be empty'
       });
     }
     let value;
-    if (typeof UserId === 'string') {
-      value = Number(UserId);
+    if (typeof userId === 'string') {
+      value = Number(userId);
       if (Number.isNaN(value)) {
         return res.status(400).json({
           status: 'Fail',
@@ -122,7 +122,7 @@ class UserValidator {
     }
     req.body.email = email;
     req.body.password = password;
-    req.body.UserId = value;
+    req.body.userId = value;
     return next();
   }
 
@@ -166,7 +166,7 @@ class UserValidator {
     if (password === undefined) {
       return res.status(401).json({
         status: 'Fail',
-        message: 'Pasword cannot be undefined'
+        message: 'Password cannot be undefined'
       });
     }
 

@@ -335,7 +335,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          expect(res.body.message).to.equal('Pasword cannot be undefined');
+          expect(res.body.message).to.equal('Password cannot be undefined');
           done();
         });
     });

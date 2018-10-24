@@ -425,7 +425,7 @@ describe('Test for (METHOD)/ Products route', () => {
           done();
         });
     });
-    // create Products
+    // create Products.
     it('Should return 201 status code successful creation of product', (done) => {
       const newLength = products.length + 1;
       chai.request(app)

@@ -43,42 +43,42 @@ class ProductValidator {
   static productInputChecker(req, res, next) {
     /* eslint-disable prefer-const */
     let {
-      productname, description, category, imageurl, quantity, unitprice, UserId
+      productName, description, category, imageurl, quantity, unitPrice, userId
     } = req.body;
     // productName
-    if (productname === undefined) {
+    if (productName === undefined) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Product name cannot be undefined'
       });
     }
-    if (typeof productname !== 'string') {
+    if (typeof productName !== 'string') {
       return res.status(400).json({
         status: 'Fail',
         message: 'Product name should be a string'
       });
     }
-    if (productname === '') {
+    if (productName === '') {
       return res.status(400).json({
         status: 'Fail',
         message: 'Product should have a name'
       });
     }
-    productname = productname.toLowerCase().trim();
-    if (productname.length < 2 || productname > 50) {
+    productName = productName.toLowerCase().trim();
+    if (productName.length < 2 || productName > 50) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Ensure that the product name is between 2 to 50 characters long'
       });
     }
     const characterChecker = /^[A-Za-z ]+$/;
-    if (!characterChecker.test(productname)) {
+    if (!characterChecker.test(productName)) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Product name should contain alpahbets only'
       });
     }
-    const foundProductName = products.find(product => product.productname === productname);
+    const foundProductName = products.find(product => product.productName === productName);
     if (foundProductName) {
       return res.status(409).json({
         status: 'Fail',
@@ -218,34 +218,34 @@ class ProductValidator {
     }
 
     // Price
-    if (unitprice === undefined) {
+    if (unitPrice === undefined) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Price is undefined. Input a positive integer greater than zero but less than length of 10'
       });
     }
-    if (typeof unitprice !== 'string') {
+    if (typeof unitPrice !== 'string') {
       return res.status(400).json({
         status: 'Fail',
         message: 'unitprice should be a string. Input a positive integer greater than zero but less than length of 10'
       });
     }
-    if (unitprice === '') {
+    if (unitPrice === '') {
       return res.status(400).json({
         status: 'Fail',
         message: 'unitprice cannot empty. Input a positive integer greater than zero but less than length of 10'
       });
     }
 
-    unitprice = unitprice.trim();
-    if (unitprice < 1) {
+    unitPrice = unitPrice.trim();
+    if (unitPrice < 1) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Invalid unitprice. Input positive a integer greater than zero but less than length of 10'
       });
     }
     const validPriceChecker = /^([0-9]){1,6}$/;
-    if (!validPriceChecker.test(unitprice)) {
+    if (!validPriceChecker.test(unitPrice)) {
       return res.status(400).json({
         status: 'Fail',
         message: 'Invalid price character detected. Input positive integer greater than zero but less than length of 10'
@@ -253,22 +253,22 @@ class ProductValidator {
     }
 
     // UserId validations
-    if (UserId === undefined) {
+    if (userId === undefined) {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be undefined'
       });
     }
 
-    if (UserId === '') {
+    if (userId === '') {
       return res.status(400).json({
         status: 'Fail',
         message: 'UserId cannot be empty'
       });
     }
     let value;
-    if (typeof UserId === 'string') {
-      value = Number(UserId);
+    if (typeof userId === 'string') {
+      value = Number(userId);
       if (Number.isNaN(value)) {
         return res.status(400).json({
           status: 'Fail',
@@ -276,13 +276,13 @@ class ProductValidator {
         });
       }
     }
-    req.body.productname = productname;
+    req.body.productName = productName;
     req.body.description = description;
     req.body.category = category;
     req.body.imageurl = imageurl;
     req.body.quantity = quantity;
-    req.body.unitprice = unitprice;
-    req.body.UserId = value;
+    req.body.unitPrice = unitPrice;
+    req.body.userId = value;
     return next();
   }
 }

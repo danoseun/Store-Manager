@@ -15,19 +15,19 @@ class ProductController {
      */
   static createProduct(req, res) {
     const {
-      productname, description, category, imageurl, quantity, unitprice
+      productName, description, category, imageurl, quantity, unitPrice
     } = req.body;
     const id = products[products.length - 1].id + 1;
-    const today = new Date();
+    const time = new Date();
     const newProduct = {
       id,
-      productname,
+      productName,
       description,
       category,
       imageurl,
       quantity,
-      unitprice,
-      today
+      unitPrice,
+      time
     };
     products.push(newProduct);
     return res.status(201).json({
@@ -78,18 +78,18 @@ class ProductController {
   static updateProduct(req, res) {
     const { foundProduct } = req.body;
     const {
-      productname, description, category, imageurl, quantity, unitprice
+      productName, description, category, imageurl, quantity, unitPrice
     } = req.body;
 
-    foundProduct.productname = productname;
+    foundProduct.productName = productName;
     foundProduct.description = description;
     foundProduct.category = category;
     foundProduct.imageurl = imageurl;
     foundProduct.quantity = quantity;
-    foundProduct.unitprice = unitprice;
+    foundProduct.unitPrice = unitPrice;
     return res.status(205).json({
       foundProduct,
-      message: 'product record updated successfully'
+      message: 'Product record updated successfully'
     });
   }
 }
