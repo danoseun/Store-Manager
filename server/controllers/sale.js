@@ -13,7 +13,7 @@ class SalesController {
      * @return {object} JSON representing success or failure message
      * @memberof SalesController
      */
-  static getAll(req, res) {
+  static getAllSales(req, res) {
     const { userId } = req.query;
     const foundUser = users.find(user => user.id === Number(userId));
     if (foundUser && foundUser.role === 'admin') {
@@ -41,13 +41,13 @@ class SalesController {
    * @param {object} res - The response object
    * @return {object} JSON representing success or failure message
    */
-  static getOne(req, res) {
+  static getOneSale(req, res) {
     const { saleId } = req.params;
     const { userId } = req.query;
     if (!Number(saleId)) {
       return res.status(400).json({
         status: 'Fail',
-        message: 'Oops! Inavlid URL'
+        message: 'Oops! Invalid URL'
       });
     }
     if (!Number(userId)) {
