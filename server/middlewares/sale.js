@@ -16,10 +16,10 @@ class SaleHelper {
   static SalesHelper(req, res, next) {
     /* eslint-disable */
     let { userId, items } = req.body;
-    if (userId === undefined || userId === '') {
+     if (userId === undefined || userId === '') {
       return res.status(400).json({
         status: 'Fail',
-        message: 'userId should be supllied'
+        message: 'userId should be supplied'
       });
     }
     let cart = [];
