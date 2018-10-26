@@ -7,7 +7,8 @@
     "start": "nodemon --exec babel-node app.js",
     "test": "nyc --reporter=html --reporter=text mocha ./server/tests/*.js --exit --compilers js:babel-core/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "createTables": "babel-node -- ./server/db/dbTables"
   },
   "repository": {
     "type": "git",
@@ -27,11 +28,15 @@
   },
   "homepage": "https://github.com/danoseun/Store-Manager#readme",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
+    "dotenv": "^6.1.0",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "^1.9.1",
+    "pg": "^7.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
