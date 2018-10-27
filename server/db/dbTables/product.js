@@ -13,7 +13,18 @@ CREATE TABLE products (
   unitPrice INTEGER NOT NULL
 )`;
 
+/**
+ * Class representing ProductTableHandler
+ * @class ProductTableHandler
+ */
 class ProductTableHandler {
+  /**
+     * Create Products Table
+     * @static
+     * @param {statement} sql - query to create table in db
+     * @param {Array} variables - values inputted into the sql statement
+     * @returns {object} representing success or failure
+     */
   static productsTable() {
     const create = pool.query(createProductsTable)
       .then(result => console.log(`productsTable: ${result[0].command}PED and ${result[1].command}D`))

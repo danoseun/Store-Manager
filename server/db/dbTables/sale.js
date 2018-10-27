@@ -9,8 +9,18 @@ const createSalesTable = `DROP TABLE IF EXISTS sales CASCADE;
     total INTEGER NOT NULL,
     saleDate TIMESTAMP NOT NULL DEFAULT (NOW())
 )`;
-
+/**
+ * Class representing SaleTableHandler
+ * @class SaleTableHandler
+ */
 class SaleTableHandler {
+  /**
+     * Create Sales Table
+     * @static
+     * @param {statement} sql - query to create table in db
+     * @param {Array} variables - values inputted into the sql statement
+     * @returns {object} representing success or failure
+     */
   static salesTable() {
     pool.query(createSalesTable)
       .then(result => console.log(`salesTable: ${result[0].command}PED and ${result[1].command}D`))
