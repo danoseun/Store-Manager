@@ -1,4 +1,7 @@
-import { users } from '../dummyDb';
+import { hashSync, compareSync } from 'bcrypt';
+import db from '../db/index';
+import { createToken } from '../middlewares/auth';
+import { createUsers } from '../db/sql';
 
 /**
  * Class representing UserController
@@ -6,24 +9,31 @@ import { users } from '../dummyDb';
  */
 class UserController {
   /**
-     * Signup a user to the application
+     * Create Account a user to the application
      * @static
      * @param {object} req - The request object
      * @param {object} res - The response object
      * @return {object} JSON representing success message
      * @memberof UserController
      */
-  static signUp(req, res) {
-    const newUser = {
-      id: users.length + 1,
-      email: req.body.email,
-      password: req.body.password,
-    };
-    users.push(newUser);
-    return res.status(201).json({
-      newUser,
-      message: 'Signup was successful'
-    });
+  static async createAccount(req, res) {
+    const params = [
+      req.body.email,
+      hashSync(req.body.password, 10)
+    ];
+
+    try {
+      const { rows } = await db.query(createUsers, params);
+      console.log(rows);
+      return res.status(201).json({
+        message: 'Signup was successful'
+      });
+    } catch (error) {
+      return res.status(500).json({
+        status: 'Fail',
+        message: error.message
+      });
+    }
   }
 
   /**

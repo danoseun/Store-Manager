@@ -1,14 +1,15 @@
 import express from 'express';
 import controllers from '../controllers';
 import middlewares from '../middlewares';
+import { isAdmin } from '../middlewares/auth';
 
 const { ProductController } = controllers;
 const {
   createProduct, getAllProducts, getOneProduct, updateProduct
 } = ProductController;
-const { ProductValidator, VerifyRole } = middlewares;
+const { ProductValidator } = middlewares;
 const { findOneProduct, productInputChecker } = ProductValidator;
-const { isAdmin } = VerifyRole;
+
 
 const productRouter = express.Router();
 
