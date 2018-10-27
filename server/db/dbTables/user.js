@@ -8,11 +8,17 @@ const createUsersTable = `DROP TABLE IF EXISTS users CASCADE;
         role CHARACTER VARYING(9) NOT NULL DEFAULT ('attendant')
     )`;
 /**
- * @static
- * @param {object} create
- * @returns {promise} promise
+ * Class representing UserTableHandler
+ * @class UserTableHandler
  */
 class UserTableHandler {
+  /**
+     * Create Users Table
+     * @static
+     * @param {statement} sql - query to create table in db
+     * @param {Array} variables - values inputted into the sql statement
+     * @returns {object} representing success or failure
+     */
   static usersTable() {
     const create = pool.query(createUsersTable)
       .then(result => console.log(`usersTable: ${result[0].command}PED and ${result[1].command}D`))

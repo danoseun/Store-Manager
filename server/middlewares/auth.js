@@ -1,61 +1,56 @@
-import { users } from '../dummyDb';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
-/**
- * Class representing User Authorization
-  @class VerifyRole
- */
-class VerifyRole {
-/**
- * isAdmin - Checks if user is admin
- * @static
- * @param {object} req - Request object
- * @param {object} res - Response Object
- * @param {object} next - Calls the next function/route handler
- * @returns {object} JSON representing the failure message
- */
-  static isAdmin(req, res, next) {
-    const { userId } = req.body;
-    const foundUser = users.find(user => user.id === userId);
-    if (foundUser) {
-      if (foundUser.role === 'admin') {
-        return next();
-      }
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'You are not authorized to visit this page'
-      });
-    }
-    return res.status(422).json({
+dotenv.config();
+
+export const createToken = (payload) => {
+  const token = jwt.sign({ payload }, process.env.SECRETKEY);
+  return token;
+};
+
+export const verifyToken = (req, res, next) => {
+  const token = req.headers.authorization || req.body.token;
+  if (!token) {
+    return res.status(403).json({
       status: 'Fail',
-      message: 'Please login with the correct details if you have been signed up by the admin'
+      mesage: 'No token supplied'
     });
   }
-
-  /**
- * isAttendant - Checks if user is attendant
- * @static
- * @param {object} req - Request object
- * @param {object} res - Response Object
- * @param {object} next - Calls the next function/route handler
- * @returns {object} JSON representing the failure message
- */
-  static isAttendant(req, res, next) {
-    const { userId } = req.body;
-    const foundUser = users.find(user => user.id === userId);
-    if (foundUser) {
-      if (foundUser.role === 'attendant') {
-        return next();
+  jwt.verify(token, process.env.SECRETKEY, (error, authData) => {
+    if (error) {
+      if (error.message.includes('signature')) {
+        return res.status(403).json({
+          status: 'Fail',
+          message: 'Invalid token supplied'
+        });
       }
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'You are not authorized to visit this page'
+      return res.status(403).json({
+        message: error
       });
     }
-    return res.status(422).json({
-      status: 'Fail',
-      message: 'Please login with the correct details if you have been signed up by the admin'
-    });
-  }
-}
+    req.authData = authData;
+    return next();
+  });
+};
 
-export default VerifyRole;
+export const isAdmin = (req, res, next) => {
+  const { role } = req.authData.payload;
+  if (role === 'admin') {
+    return next();
+  }
+  return res.status(401).json({
+    status: 'Fail',
+    message: 'You are not authorized to access this route'
+  });
+};
+
+export const isAttendant = (req, res, next) => {
+  const { role } = req.authData.payload;
+  if (role === 'attendant') {
+    return next();
+  }
+  return res.status(401).json({
+    status: 'Fail',
+    message: 'You are not authorized to access this route'
+  });
+};

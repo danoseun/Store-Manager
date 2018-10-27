@@ -1,4 +1,5 @@
-import { users } from '../dummyDb';
+import db from '../db/index';
+import { queryUsersByEmail } from '../db/sql';
 
 /**
  * Class representing User Validations
@@ -13,7 +14,7 @@ class UserValidator {
     */
   static signUpValidator(req, res, next) {
     /* eslint-disable prefer-const */
-    let { email, password, userId } = req.body;
+    let { email, password } = req.body;
     if (email === undefined) {
       return res.status(400).json({
         status: 'Fail',
@@ -47,83 +48,53 @@ class UserValidator {
         message: 'Email should be 10 to 50 characters long'
       });
     }
-    const foundEmail = users.find(user => user.email === email);
-    if (foundEmail) {
-      return res.status(409).json({
+    db.query(queryUsersByEmail, [email])
+      .then((result) => {
+        if (result.rowCount !== 0) {
+          return res.status(409).json({
+            status: 'Fail',
+            message: 'Email already exists!'
+          });
+        }
+        // Password Validations
+        if (password === undefined) {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password cannot be undefined'
+          });
+        }
+        if (typeof password !== 'string') {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password should be a string'
+          });
+        }
+        password = password.trim();
+        if (password === '') {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password field cannot be empty'
+          });
+        }
+        if (typeof password !== 'string') {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password should be a string'
+          });
+        }
+        if (password.length < 8 || password.length > 20) {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password should be 8 to 20 characters long'
+          });
+        }
+        req.body.email = email;
+        req.body.password = password;
+        return next();
+      }).catch(error => res.status(500).json({
         status: 'Fail',
-        message: 'Email already exists!'
-      });
-    }
-
-    // Password Validations
-    if (password === undefined) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Password cannot be undefined'
-      });
-    }
-    if (typeof password !== 'string') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Password should be a string'
-      });
-    }
-    password = password.trim();
-    if (password === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Password field cannot be empty'
-      });
-    }
-    if (typeof password !== 'string') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Password should be a string'
-      });
-    }
-    if (password.length < 8 || password.length > 20) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Password should be 8 to 20 characters long'
-      });
-    }
-
-    // UserId validations
-    if (userId === undefined) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'UserId cannot be undefined'
-      });
-    }
-
-    if (userId === '') {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'UserId cannot be empty'
-      });
-    }
-    let value;
-    if (typeof userId === 'string') {
-      value = Number(userId);
-      if (Number.isNaN(value)) {
-        return res.status(400).json({
-          status: 'Fail',
-          message: 'UserId should be a valid number'
-        });
-      }
-
-      // if (typeof UserId !== 'number') {
-      //   return res.status(400).json({
-      //     status: 'Fail',
-      //     message: 'UserId should be a number',
-      //
-      //   });
-      // }
-    }
-    req.body.email = email;
-    req.body.password = password;
-    req.body.userId = value;
-    return next();
+        message: error.message
+      }));
   }
 
   /**

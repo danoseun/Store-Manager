@@ -1,12 +1,12 @@
 import express from 'express';
 import controllers from '../controllers';
 import middlewares from '../middlewares';
+import { isAttendant } from '../middlewares/auth';
 
 const { SalesController } = controllers;
 const { getAllSales, getOneSale, createSale } = SalesController;
-const { VerifyRole, SaleHelper } = middlewares;
+const { SaleHelper } = middlewares;
 const { SalesHelper } = SaleHelper;
-const { isAttendant } = VerifyRole;
 
 const salesRouter = express.Router();
 
