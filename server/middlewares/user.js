@@ -118,45 +118,47 @@ class UserValidator {
         message: 'Email should be a string'
       });
     }
+    email = email.toLowerCase().trim();
     if (email === '') {
       return res.status(400).json({
         status: 'Fail',
         message: 'Please supply your email'
       });
     }
-
-    email = email.toLowerCase().trim();
-    const foundUser = users.find(user => user.email === email);
-    if (!foundUser) {
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'Authentication failed'
-      });
-    }
-
-    if (password === undefined) {
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'Password cannot be undefined'
-      });
-    }
-
-    if (password === '') {
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'Password cannot be empty'
-      });
-    }
-    password = password.trim();
-    if (foundUser && password !== foundUser.password) {
-      return res.status(401).json({
-        status: 'Fail',
-        message: 'Authentication unsuccessful',
-      });
-    }
-    req.body.foundUser = foundUser;
-    req.body.password = password;
-    return next();
+    db.query(queryUsersByEmail, [email])
+      .then((result) => {
+        if (result.rowCount === 0) {
+          return res.status(401).json({
+            status: 'Fail',
+            message: 'Authentication failed'
+          });
+        }
+        if (password === undefined) {
+          return res.status(401).json({
+            status: 'Fail',
+            message: 'Password cannot be undefined'
+          });
+        }
+        if (typeof password !== 'string') {
+          return res.status(400).json({
+            status: 'Fail',
+            message: 'Password should be a string'
+          });
+        }
+        password = password.trim();
+        if (password === '') {
+          return res.status(401).json({
+            status: 'Fail',
+            message: 'Password cannot be empty'
+          });
+        }
+        req.body.email = email;
+        req.body.password = password;
+        return next();
+      })
+      .catch(error => res.status(500).json({
+        message: error.message
+      }));
   }
 }
 
