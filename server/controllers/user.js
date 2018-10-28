@@ -1,7 +1,7 @@
 import { hashSync, compareSync } from 'bcrypt';
 import db from '../db/index';
 import { createToken } from '../middlewares/auth';
-import { createUsers } from '../db/sql';
+import { createUser, queryUsersByEmail } from '../db/sql';
 
 /**
  * Class representing UserController
@@ -23,11 +23,12 @@ class UserController {
     ];
 
     try {
-      const { rows } = await db.query(createUsers, params);
-      console.log(rows);
-      return res.status(201).json({
-        message: 'Signup was successful'
-      });
+      const { rows } = await db.query(createUser, params);
+      if (rows) {
+        return res.status(201).json({
+          message: 'Signup was successful'
+        });
+      }
     } catch (error) {
       return res.status(500).json({
         status: 'Fail',
@@ -44,11 +45,35 @@ class UserController {
      * @return {object} JSON object representing success message
      * @memberof UserController
      */
-  static login(req, res) {
-    const { foundUser } = req.body;
-    return res.status(200).json({
-      message: `Welcome ${foundUser.email}!`
-    });
+  static async login(req, res) {
+    const params = [req.body.email];
+    try {
+      const result = await db.query(queryUsersByEmail, params);
+      if (result) {
+        if (result.rowCount !== 0) {
+          const comparePassword = compareSync(req.body.password, result.rows[0].password);
+          if (comparePassword) {
+            const authUser = result.rows[0];
+            const token = createToken(authUser);
+            return res.status(200).json({
+              message: 'Login was successful',
+              token
+            });
+          }
+          if (!comparePassword) {
+            return res.status(401).json({
+              status: 'Fail',
+              message: 'User authentication failed'
+            });
+          }
+        }
+      }
+    } catch (error) {
+      res.status(500).json({
+        status: 'Fail',
+        message: error.message
+      });
+    }
   }
 }
 export default UserController;
