@@ -1,7 +1,7 @@
 import { hashSync, compareSync } from 'bcrypt';
 import db from '../db/index';
 import { createToken } from '../middlewares/auth';
-import { createUser, queryUsersByEmail } from '../db/sql';
+import { createUser, queryUsersByEmail, deleteUser } from '../db/sql';
 
 /**
  * Class representing UserController
@@ -68,6 +68,35 @@ class UserController {
           }
         }
       }
+    } catch (error) {
+      res.status(500).json({
+        status: 'Fail',
+        message: error.message
+      });
+    }
+  }
+
+  /**
+     * Delete a user to the application
+     * @static
+     * @param {object} req - The request object
+     * @param {object} res - The response object
+     * @return {object} JSON object representing success message
+     * @memberof UserController
+     */
+  static async deleteUser(req, res) {
+    const { id } = req.params;
+    const params = [id];
+    try {
+      const { rowCount } = await db.query(deleteUser, params);
+      if (rowCount > 0) {
+        return res.status(200).json({
+          message: 'User successully deleted'
+        });
+      }
+      return res.status(404).json({
+        message: 'User does not exist'
+      });
     } catch (error) {
       res.status(500).json({
         status: 'Fail',
