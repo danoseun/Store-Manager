@@ -1,7 +1,9 @@
 import { hashSync, compareSync } from 'bcrypt';
 import db from '../db/index';
 import { createToken } from '../middlewares/auth';
-import { createUser, queryUsersByEmail, deleteUser } from '../db/sql';
+import {
+  createUser, queryUsersByEmail, deleteUser, findUserById, updateUserQuery
+} from '../db/sql';
 
 /**
  * Class representing UserController
@@ -99,6 +101,42 @@ class UserController {
       });
     } catch (error) {
       res.status(500).json({
+        status: 'Fail',
+        message: error.message
+      });
+    }
+  }
+
+  /**
+     * Admin can give admin right to the specific store attendant
+     * @static
+     * @param {object} req - The request object
+     * @param {object} res - The response object
+     * @return {object} JSON object representing success message
+     * @memberof UserController
+     */
+  static async giveAdminRight(req, res) {
+    try {
+      const result = await db.query(findUserById, [req.params.id]);
+      console.log('res', res);
+      if (result.rowCount !== 0) {
+        if (result.rows[0].role === 'attendant') {
+          const response = await db.query(updateUserQuery, ['admin']);
+          console.log('RES', response);
+          return res.status(200).json({
+            message: 'User updated successfully'
+          });
+        }
+        return res.status(409).json({
+          status: 'Fail',
+          message: 'User is already an admin'
+        });
+      } return res.status(404).json({
+        status: 'Fail',
+        message: 'User not found'
+      });
+    } catch (error) {
+      return res.status(500).json({
         status: 'Fail',
         message: error.message
       });
