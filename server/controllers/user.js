@@ -127,7 +127,7 @@ class UserController {
             message: 'User updated successfully'
           });
         }
-        return res.status(200).json({
+        return res.status(409).json({
           status: 'Fail',
           message: 'User is already an admin'
         });
