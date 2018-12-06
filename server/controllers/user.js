@@ -118,11 +118,10 @@ class UserController {
   static async giveAdminRight(req, res) {
     try {
       const result = await db.query(findUserById, [req.params.id]);
-      console.log('res', res);
       if (result.rowCount !== 0) {
         if (result.rows[0].role === 'attendant') {
-          const response = await db.query(updateUserQuery, ['admin']);
-          console.log('RES', response);
+          /* eslint-disable */
+          const response = await db.query(updateUserQuery, ['admin', req.params.id]);
           return res.status(200).json({
             message: 'User updated successfully'
           });

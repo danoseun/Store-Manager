@@ -1,5 +1,11 @@
 import pool from '../connection';
 
+/**
+ * In the long run, the userId in products table
+ * is unnecessary because the interaction between the user table
+ * and products table is minimal
+ */
+
 const createProductsTable = `DROP TABLE IF EXISTS products CASCADE;
 CREATE TABLE products (
   id SERIAL PRIMARY KEY NOT NULL,
