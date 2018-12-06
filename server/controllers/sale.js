@@ -1,4 +1,5 @@
-import { users, sales } from '../dummyDb';
+import db from '../db/index';
+import { createSaleQuery, queryAllSales, queryOneSale } from '../db/sql';
 
 /**
  * Class representing SalesController
@@ -13,25 +14,20 @@ class SalesController {
      * @return {object} JSON representing success or failure message
      * @memberof SalesController
      */
-  static getAllSales(req, res) {
-    const { userId } = req.query;
-    const foundUser = users.find(user => user.id === Number(userId));
-    if (foundUser && foundUser.role === 'admin') {
+  static async getAllSales(req, res) {
+    try {
+      const { rows } = await db.query(queryAllSales);
       return res.status(200).json({
-        sales,
-        message: 'All sales successfully served'
+        message: 'Sale record successfully served',
+        rows
       });
-    }
-    if (foundUser && foundUser.role !== 'admin') {
-      return res.status(401).json({
+    } catch (error) {
+      const { message } = error;
+      return res.status(500).json({
         status: 'Fail',
-        message: 'You are not authorized to visit this page'
+        message
       });
     }
-    return res.status(400).json({
-      status: 'Fail',
-      message: 'Invalid credentials'
-    });
   }
 
   /**
@@ -41,45 +37,36 @@ class SalesController {
    * @param {object} res - The response object
    * @return {object} JSON representing success or failure message
    */
-  static getOneSale(req, res) {
-    const { saleId } = req.params;
-    const { userId } = req.query;
-    if (!Number(saleId)) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Oops! Invalid URL'
-      });
-    }
-    if (!Number(userId)) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Inavlid credentials'
-      });
-    }
-    const foundUser = users.find(user => user.id === Number(userId));
-    const foundSale = sales.find(sale => sale.id === Number(saleId));
-    if (!foundUser) {
-      return res.status(400).json({
-        status: 'Fail',
-        message: 'Invalid credentials'
-      });
-    }
-    if (!foundSale) {
-      return res.status(404).json({
-        status: 'Fail',
-        message: 'Sale with ID does not exist'
-      });
-    }
-    if (foundUser && foundSale) {
-      if (foundUser.role === 'admin' || foundSale.userId === Number(userId)) {
-        return res.status(200).json({
-          foundSale,
-          message: 'Sale fetched'
+  static async getOneSale(req, res) {
+    const { id, role } = req.authData.payload;
+    console.log(id, role);
+    try {
+      const result = await db.query(queryOneSale, [req.params.saleId, id]);
+      console.log('ONE SALE', result);
+      if (!result.rows[0]) {
+        return res.status(404).json({
+          status: 'Fail',
+          message: 'Sale no dey yet'
         });
       }
-      return res.status(401).json({
+      if (result.rows[0].userid === id || role === 'admin') {
+        const sale = result.rows[0];
+        return res.status(200).json({
+          message: 'This is the sale record you requested',
+          sale
+        });
+      }
+      if (result.rows[0].userid !== id) {
+        return res.status(401).json({
+          status: 'Fail',
+          message: 'You cant view a sale you did not create'
+        });
+      }
+    } catch (error) {
+      const { message } = error;
+      return res.status(500).json({
         status: 'Fail',
-        message: 'You are not authorized to view this resource'
+        message
       });
     }
   }
@@ -91,20 +78,23 @@ class SalesController {
    * @param {object} res - The response object
    * @return {object} JSON representing success message
    */
-  static createSale(req, res) {
-    const { cart, total, userId } = req.body;
-    const id = sales.length + 1;
-    const newSale = {
-      id,
-      userId,
-      cart,
-      total
-    };
-    sales.push(newSale);
-    return res.status(201).json({
-      message: 'Sale record created successfully',
-      newSale
-    });
+  static async createSale(req, res) {
+    const { variables } = req.body;
+    // console.log('VAR', variables);
+    try {
+      const result = await db.query(createSaleQuery, variables);
+      const saleRecord = result.rows[0];
+      return res.status(201).json({
+        message: 'Sale record created successfully',
+        saleRecord
+      });
+    } catch (error) {
+      const { message } = error;
+      return res.status(500).json({
+        status: 'Fail',
+        message
+      });
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 import express from 'express';
 import controllers from '../controllers';
 import middlewares from '../middlewares';
-import { isAttendant } from '../middlewares/auth';
+import { isAttendant, isAdmin, verifyToken } from '../middlewares/auth';
 
 const { SalesController } = controllers;
 const { getAllSales, getOneSale, createSale } = SalesController;
@@ -10,8 +10,8 @@ const { SalesHelper } = SaleHelper;
 
 const salesRouter = express.Router();
 
-salesRouter.get('/sales', getAllSales);
-salesRouter.get('/sales/:saleId', getOneSale);
-salesRouter.post('/sales', isAttendant, SalesHelper, createSale);
+salesRouter.get('/sales', verifyToken, isAdmin, getAllSales);
+salesRouter.get('/sales/:saleId', verifyToken, getOneSale);
+salesRouter.post('/sales', verifyToken, isAttendant, SalesHelper, createSale);
 
 export default salesRouter;

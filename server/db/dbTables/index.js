@@ -1,7 +1,7 @@
 import usersTable from './user';
 import productsTable from './product';
 import salesTable from './sale';
-import createAdmin from './insertAdmin';
+import createAdmin from './seedAdmin/insertAdmin';
 
 usersTable()
   .then(() => createAdmin()

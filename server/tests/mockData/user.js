@@ -1,21 +1,21 @@
 export const validSignUpData = [
   // Good email
   {
-    email: 'ownerone@sm.com',
+    email: 'testattone@sm.com',
     password: 'passpaasa',
-    userId: '1'
+    // userId: '1'
   },
   // Good password
   {
-    email: 'ownertwo@sm.com',
+    email: 'testatttwo@sm.com',
     password: 'passpassone',
-    userId: '1'
+    // userId: '1'
   },
-  // Admin
+
   {
-    email: 'ownerthree@sm.com',
+    email: 'testattthree@sm.com',
     password: 'passpaasa',
-    userId: '1'
+    // userId: '1'
   },
 ];
 
