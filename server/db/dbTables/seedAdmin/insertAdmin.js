@@ -2,10 +2,10 @@ import bcrypt from 'bcrypt';
 import pool from '../../connection';
 
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
-let password = process.env.PASSWORD;
-password = bcrypt.hashSync(password, 10);
+const password = process.env.PASSWORD;
+const newPassword = bcrypt.hashSync(password, 10);
 const email = process.env.EMAIL;
-const variables = [email, password, 'admin'];
+const variables = [email, newPassword, 'admin'];
 
 /**
  * Class representing InsertAdminHandler
