@@ -1,3 +1,4 @@
+
 import { hashSync, compareSync } from 'bcrypt';
 import db from '../db/index';
 import { createToken } from '../middlewares/auth';

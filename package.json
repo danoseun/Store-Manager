@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel-node app.js",
     "start:dev": "nodemon --exec babel-node app.js",
-    "test": "nyc --reporter=html --reporter=text mocha ./server/tests/auser.js --exit --compilers js:babel-core/register",
+    "test": "npm run createTables && nyc --reporter=html --reporter=text mocha ./server/tests/*.js --exit --compilers js:babel-core/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "createTables": "babel-node -- ./server/db/dbTables"
@@ -31,7 +31,9 @@
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
