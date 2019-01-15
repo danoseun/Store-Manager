@@ -20,7 +20,7 @@ class SaleHelper {
     let total = 0;
     const promises = [];
     let newQuantity;
-    console.log('req', req.body);
+    // console.log('req', req.body);
     saleItems.forEach((sale, index, saleArray) => {
       if (!sale.productId) {
         return res.status(400).json({
@@ -36,6 +36,7 @@ class SaleHelper {
         });
       }
       if (sale.productId.length > 8) {
+        console.log('EIGHT', typeof sale.productId);
         return res.status(400).json({
           status: 'Fail',
           message: `productId ${sale.productId} is out of range.`
@@ -49,7 +50,7 @@ class SaleHelper {
       }
       db.query(queryProductTableById, [sale.productId])
         .then((result) => {
-          console.log('resulT', result);
+          // console.log('resulT', result);
           if (result.rowCount === 0) {
             return res.status(404).json({
               status: 'Fail',
@@ -76,7 +77,7 @@ class SaleHelper {
           promises.push(sale);
           return promises;
         }).then((feedback) => {
-          console.log('FEEDBACK', feedback);
+          // console.log('FEEDBACK', feedback);
           db.query(productQuantityAfterSale, [newQuantity, sale.productId])
             .then(() => {});
 

@@ -62,9 +62,8 @@ export const inValidSignUpData = [
   },
   // Email already in use
   {
-    email: 'ownertwo@sm.com',
-    password: 'passedonepa',
-    userId: '1'
+    email: 'testattwo@sm.com',
+    password: 'passedonepa'
   },
   // Password not a string
   {

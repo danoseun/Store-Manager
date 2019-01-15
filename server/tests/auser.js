@@ -8,26 +8,33 @@ import {
 } from './mockData/user';
 // import { users } from '../dummyDb';
 
+
+let generateToken;
 const { should, expect } = chai;
 should();
 
 chai.use(chaiHttp);
+
 
 const url = '/api/v1/auth/signup';
 const url1 = '/api/v1/auth/login';
 
 describe('Test for user route', () => {
   describe('Test for signup API', () => {
-    it('Should return 201 status code and create new user', (done) => {
+    it('Should create token for admin', (done) => {
       // const newLength = users.length + 1;
       chai.request(app)
-        .post(url)
-        .send(validSignUpData[0])
+        .post(url1)
+        .send({
+          email: 'adminowner@sm.com',
+          password: 'adminuser'
+        })
         .end((err, res) => {
-          res.should.have.status(201);
+          // res.should.have.status(201);
           // res.body.should.be.an('object');
           // expect(res.body).to.have.property('newUser');
-          expect(res.body.message).to.equal('Signup was successful');
+          expect(res).to.have.status(200);
+          generateToken = res.body.token;
           // expect(users).to.have.length(newLength);
           done();
         });
@@ -37,6 +44,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(validSignUpData[1])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(201);
           // res.body.should.be.an('object');
@@ -51,6 +59,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(validSignUpData[2])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(201);
           // res.body.should.be.an('object');
@@ -64,6 +73,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[0])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -76,6 +86,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[1])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -88,6 +99,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[2])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -100,6 +112,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[3])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -112,6 +125,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[4])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -124,6 +138,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[5])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -136,6 +151,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[6])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -147,7 +163,8 @@ describe('Test for user route', () => {
     it('Should return 409 for email already in use', (done) => {
       chai.request(app)
         .post(url)
-        .send(inValidSignUpData[7])
+        .send(validSignUpData[1])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(409);
           res.body.should.be.a('object');
@@ -160,6 +177,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[8])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -172,6 +190,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[9])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -184,6 +203,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[10])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -256,6 +276,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[16])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -268,6 +289,7 @@ describe('Test for user route', () => {
       chai.request(app)
         .post(url)
         .send(inValidSignUpData[17])
+        .set('authorization', generateToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -335,7 +357,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          expect(res.body.message).to.equal('Password cannot be undefined');
+          expect(res.body.message).to.equal('Authentication failed'); // password cannot be undefined
           done();
         });
     });
@@ -347,7 +369,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          expect(res.body.message).to.equal('Password cannot be empty');
+          expect(res.body.message).to.equal('Authentication failed'); // password cannot be empty.
           done();
         });
     });
@@ -359,7 +381,7 @@ describe('Test for user route', () => {
           res.should.have.status(401);
           res.body.should.be.a('object');
           expect(res.body.status).to.equal('Fail');
-          expect(res.body.message).to.equal('Authentication unsuccessful');
+          expect(res.body.message).to.equal('Authentication failed');
           done();
         });
     });
@@ -367,7 +389,7 @@ describe('Test for user route', () => {
       // const newLength = users.length;
       chai.request(app)
         .post(url1)
-        .send(validSignInData[0])
+        .send(validSignUpData[1])
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');

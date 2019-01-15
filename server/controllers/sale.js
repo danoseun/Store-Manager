@@ -39,10 +39,10 @@ class SalesController {
    */
   static async getOneSale(req, res) {
     const { id, role } = req.authData.payload;
-    console.log(id, role);
+    // console.log(id, role);
     try {
       const result = await db.query(queryOneSale, [req.params.saleId, id]);
-      console.log('ONE SALE', result);
+      // console.log('ONE SALE', result);
       if (!result.rows[0]) {
         return res.status(404).json({
           status: 'Fail',

@@ -1,101 +1,118 @@
 export const inValidSaleInputData = [
   {
-    userId: '',
-    items: [
+    saleItems: [
       {
-        productId: 5,
-        productName: 'Headphone',
-        quantity: 2,
-        unitPrice: 750
+        quantity: 2
       },
       {
-        productId: 6,
-        productName: 'Earpiece',
-        quantity: 3,
-        unitPrice: 500
+        quantity: 2
       }
-    ],
-    total: 1500,
-    dateSold: new Date()
+    ]
   },
 
   {
-    items: [
+    saleItems: [
       {
-        productId: 5,
-        productName: 'Headphone',
-        quantity: 2,
-        unitPrice: 750
+        productId: 0.5,
+        quantity: 2
       },
       {
-        productId: 6,
-        productName: 'Earpiece',
-        quantity: 3,
-        unitPrice: 500
+        productId: 'q',
+        quantity: 2
       }
-    ],
-    total: 1500,
-    dateSold: new Date()
+    ]
   },
 
   {
-    userId: 1,
-    items: [
+    saleItems: [
       {
-        productId: 5,
-        productName: 'Headphone',
-        quantity: 2,
-        unitPrice: 750
+        productId: 12345678945,
+        quantity: 2
       },
       {
-        productId: 6,
-        productName: 'Earpiece',
-        quantity: 3,
-        unitPrice: 500
+        productId: 9876543456,
+        quantity: 2
       }
-    ],
-    total: 1500,
-    dateSold: new Date()
+    ]
   },
+
   {
-    userId: 2,
-    items: [
+    saleItems: [
       {
-        productId: 20,
-        productName: 'Headphone',
-        quantity: 2,
-        unitPrice: 750
+        productId: 1,
+        quantity: 'q'
       },
       {
-        productId: 21,
-        productName: 'Earpiece',
-        quantity: 3,
-        unitPrice: 500
+        productId: 1,
+        quantity: 0.5
       }
-    ],
-    total: 1500,
-    dateSold: new Date()
-  },
+    ]
+  }
 ];
 
 export const validSaleInputData = [
   {
-    userId: 2,
-    items: [
+    saleItems: [
       {
-        productId: 5,
-        productName: 'Headphone',
-        quantity: 2,
-        unitPrice: 750
+        productId: 1,
+        quantity: 2
       },
       {
-        productId: 5,
-        productName: 'Earpiece',
-        quantity: 3,
-        unitPrice: 500
+        productId: 2,
+        quantity: 2
       }
-    ],
-    total: 1500,
-    dateSold: new Date()
+    ]
   },
+
+  {
+    saleItems: [
+      {
+        productId: 2,
+        quantity: 1
+      },
+      {
+        productId: 1,
+        quantity: 2
+      }
+    ]
+  },
+
+  {
+    saleItems: [
+      {
+        productId: 3,
+        quantity: 1
+      },
+      {
+        productId: 4,
+        quantity: 2
+      }
+    ]
+  },
+
+  {
+    saleItems: [
+      {
+        productId: 7,
+        quantity: 1
+      },
+      {
+        productId: 8,
+        quantity: 1
+      }
+    ]
+  },
+
+  {
+    saleItems: [
+      {
+        productId: 3,
+        quantity: 2000
+      },
+      {
+        productId: 4,
+        quantity: 2000
+      }
+    ]
+  }
 ];

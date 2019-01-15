@@ -6,12 +6,14 @@ import {
   validProductData, inValidProductNameData, inValidDescriptionData, inValidCategoryData,
   inValidImageURLData, inValidQuantityData, inValidUnitPriceData, inValidUserIdData
 } from './mockData/product';
-import { products } from '../dummyDb';
+// import { products } from '../dummyDb';
 
 const { should, expect } = chai;
 should();
 
 chai.use(chaiHttp);
+let adminToken;
+let attendantToken;
 
 const url = '/api/v1/products';
 const inValidParams = 'abc';
@@ -21,11 +23,60 @@ const notFound = `/api/v1/products/${notFoundProdId}`;
 const foundParams = 1;
 const foundURL = `/api/v1/products/${foundParams}`;
 
+describe('Create Token for attendant', () => {
+  it('should return token for successful login for non-admin', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'testatttwo@sm.com',
+        password: 'passpassone'
+      })
+      .end((error, res) => {
+        expect(res).to.have.status(200);
+        attendantToken = res.body.token;
+        done();
+      });
+  });
+});
+
+describe('Test POST Product for  attendant', () => {
+  it('should return 401 if not role is not admin', (done) => {
+    chai.request(app)
+      .post(url)
+      .set('authorization', attendantToken)
+      .send(validProductData[0])
+      .end((error, res) => {
+        expect(res).to.have.status(401);
+        expect(res.body).to.be.a('object');
+        expect(res.body.message).to.equal('You are not authorized to access this route');
+        done();
+      });
+  });
+});
+
+
+describe('Create Token for Admin', () => {
+  it('Should return token for successful login', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send({
+        email: 'adminowner@sm.com',
+        password: 'adminuser'
+      })
+      .end((error, res) => {
+        expect(res).to.have.status(200);
+        adminToken = res.body.token;
+        done();
+      });
+  });
+});
+
 describe('Test for (METHOD)/ Products route', () => {
   describe('Tests for createProduct API', () => {
     it('Should return 400 status code for undefined product name', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidProductNameData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -38,6 +89,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for product name not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidProductNameData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -50,6 +102,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty product name', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidProductNameData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -62,6 +115,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid product name length', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidProductNameData[3])
         .end((err, res) => {
           res.should.have.status(400);
@@ -74,6 +128,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid character in product name', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidProductNameData[4])
         .end((err, res) => {
           res.should.have.status(400);
@@ -87,6 +142,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined description', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidDescriptionData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -99,6 +155,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for description not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidDescriptionData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -111,6 +168,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty description', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidDescriptionData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -123,6 +181,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid description length', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidDescriptionData[3])
         .end((err, res) => {
           res.should.have.status(400);
@@ -135,6 +194,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid character description', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidDescriptionData[4])
         .end((err, res) => {
           res.should.have.status(400);
@@ -148,6 +208,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined category', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidCategoryData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -160,6 +221,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for category not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidCategoryData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -172,6 +234,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty category', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidCategoryData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -184,6 +247,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid category characters', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidCategoryData[3])
         .end((err, res) => {
           res.should.have.status(400);
@@ -196,6 +260,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid category length', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidCategoryData[4])
         .end((err, res) => {
           res.should.have.status(400);
@@ -209,6 +274,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined image URL data', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidImageURLData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -221,6 +287,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for image URL not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidImageURLData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -233,6 +300,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty image URL data', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidImageURLData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -246,6 +314,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined quantity', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -258,6 +327,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for quantity not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -270,6 +340,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty quantity', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -282,6 +353,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid quantity length', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[3])
         .end((err, res) => {
           res.should.have.status(400);
@@ -294,6 +366,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for quantity less than 1', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[4])
         .end((err, res) => {
           res.should.have.status(400);
@@ -306,6 +379,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid quantity character', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidQuantityData[5])
         .end((err, res) => {
           res.should.have.status(400);
@@ -319,6 +393,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined unit price data', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidUnitPriceData[0])
         .end((err, res) => {
           res.should.have.status(400);
@@ -331,6 +406,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for undefined unit price not a string', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidUnitPriceData[1])
         .end((err, res) => {
           res.should.have.status(400);
@@ -343,6 +419,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for empty unit price data', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidUnitPriceData[2])
         .end((err, res) => {
           res.should.have.status(400);
@@ -355,6 +432,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code if unit price is less than 1', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidUnitPriceData[3])
         .end((err, res) => {
           res.should.have.status(400);
@@ -367,6 +445,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code for invalid unit price data', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(inValidUnitPriceData[4])
         .end((err, res) => {
           res.should.have.status(400);
@@ -377,7 +456,7 @@ describe('Test for (METHOD)/ Products route', () => {
         });
     });
     // UserID
-    it('Should return 400 status code for undefined userID', (done) => {
+    /** it('Should return 400 status code for undefined userID', (done) => {
       chai.request(app)
         .post(url)
         .send(inValidUserIdData[0])
@@ -424,67 +503,72 @@ describe('Test for (METHOD)/ Products route', () => {
           expect(res.body.message).to.equal('Please login with the correct details if you have been signed up by the admin');
           done();
         });
-    });
+    }); */
     // create Products.
     it('Should return 201 status code successful creation of product', (done) => {
-      const newLength = products.length + 1;
+      // const newLength = products.length + 1;
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(validProductData[0])
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
           expect(res.body.message).to.equal('Product record successfully created');
-          expect(products).to.have.length(newLength);
+          // expect(products).to.have.length(newLength);
           done();
         });
     });
     it('Should return 201 status code successful creation of product(1)', (done) => {
-      const newLength = products.length + 1;
+      // const newLength = products.length + 1;
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(validProductData[1])
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
           expect(res.body.message).to.equal('Product record successfully created');
-          expect(products).to.have.length(newLength);
+          // expect(products).to.have.length(newLength);
           done();
         });
     });
     it('Should return 201 status code successful creation of product(2)', (done) => {
-      const newLength = products.length + 1;
+      // const newLength = products.length + 1;
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(validProductData[2])
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
           expect(res.body.message).to.equal('Product record successfully created');
-          expect(products).to.have.length(newLength);
+          // expect(products).to.have.length(newLength);
           done();
         });
     });
     it('Should return 201 status code successful creation of product(3)', (done) => {
-      const newLength = products.length + 1;
+      // const newLength = products.length + 1;
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(validProductData[3])
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('newProduct');
           expect(res.body.message).to.equal('Product record successfully created');
-          expect(products).to.have.length(newLength);
+          // expect(products).to.have.length(newLength);
           done();
         });
     });
     it('Should return 409 status code if product name already exists', (done) => {
       chai.request(app)
         .post(url)
+        .set('authorization', adminToken)
         .send(validProductData[0])
         .end((err, res) => {
           res.should.have.status(409);
@@ -499,6 +583,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 400 status code if productID is invalid', (done) => {
       chai.request(app)
         .get(inValidURL)
+        .set('authorization', adminToken)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -510,6 +595,7 @@ describe('Test for (METHOD)/ Products route', () => {
     it('Should return 404 status code if productID is valid but not found', (done) => {
       chai.request(app)
         .get(notFound)
+        .set('authorization', adminToken)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -519,44 +605,47 @@ describe('Test for (METHOD)/ Products route', () => {
         });
     });
     it('Should return 200 status code if product is found', (done) => {
-      const sameLength = products.length;
+      // const sameLength = products.length;
       chai.request(app)
         .get(foundURL)
+        .set('authorization', adminToken)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
           expect(res.body).to.have.property('foundProduct');
           expect(res.body.message).to.equal('Product successfully found');
-          expect(products).to.have.length(sameLength);
+          // expect(products).to.have.length(sameLength);
           done();
         });
     });
     it('Should return 200 status code and get all products in the db', (done) => {
-      const sameLength = products.length;
+      // const sameLength = products.length;
       chai.request(app)
         .get(url)
+        .set('authorization', adminToken)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
-          expect(res.body).to.have.property('products');
+          expect(res.body).to.have.property('rows');
           expect(res.body.message).to.equal('All products successfully served');
-          expect(products).to.have.length(sameLength);
+          // expect(products).to.have.length(sameLength);
           done();
         });
     });
   });
   describe('Tests for PutURL API', () => {
-    it('Should return 205 status and successfully update existing product', (done) => {
-      const sameLength = products.length;
+    it('Should return 200 status and successfully update existing product', (done) => {
+      // const sameLength = products.length;
       chai.request(app)
         .put(foundURL)
+        .set('authorization', adminToken)
         .send(validProductData[4])
         .end((err, res) => {
-          res.should.have.status(205);
+          res.should.have.status(200);
           res.body.should.be.a('object');
-          expect(res.body).to.have.property('foundProduct');
-          expect(res.body.message).to.equal('Product record updated successfully');
-          expect(products).to.have.length(sameLength);
+          expect(res.body).to.have.property('updatedProduct');
+          expect(res.body.message).to.equal('Update was succesfull');
+          // expect(products).to.have.length(sameLength);
           done();
         });
     });
