@@ -1,11 +1,34 @@
 import bcrypt from 'bcrypt';
 import pool from '../../connection';
 
+
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
 const password = process.env.PASSWORD;
 const newPassword = bcrypt.hashSync(password, 10);
 const email = process.env.EMAIL;
 const variables = [email, newPassword, 'admin'];
+
+// const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
+// const password = process.env.PASSWORD;
+// console.log('pa', password);
+
+// // async
+// let hashPassword;
+// // eslint-disable-next-line require-jsdoc
+// async function value() {
+//   console.log('PASS', password);
+//   try {
+//     hashPassword = await bcrypt.hash(password, 10);
+//     console.log('OYA', hashPassword);
+//     return hashPassword;
+//   } catch (error) {
+//     return error.message;
+//   }
+// }
+// const email = process.env.EMAIL;
+// const variables = [email, value(), 'admin'];
+// console.log('NOW', variables[1]);
+
 
 /**
  * Class representing InsertAdminHandler
