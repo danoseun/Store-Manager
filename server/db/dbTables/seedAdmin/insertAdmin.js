@@ -3,10 +3,19 @@ import pool from '../../connection';
 
 
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
+
 const password = process.env.PASSWORD;
-const newPassword = bcrypt.hashSync(password, 10);
+
+const saltRounds = 10;
+
+const salt = bcrypt.genSaltSync(saltRounds);
+
+const newPassword = bcrypt.hashSync(password, salt);
+
 const email = process.env.EMAIL;
+
 const variables = [email, newPassword, 'admin'];
+
 
 // const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
 // const password = process.env.PASSWORD;
