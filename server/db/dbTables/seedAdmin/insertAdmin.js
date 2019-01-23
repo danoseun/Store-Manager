@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import bcrypt from 'bcrypt';
 import pool from '../../connection';
 
@@ -5,16 +6,16 @@ import pool from '../../connection';
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
 
 const password = process.env.PASSWORD;
+console.log('PASS', password);
 
 const saltRounds = 10;
 
-const salt = bcrypt.genSaltSync(saltRounds);
-
-const newPassword = bcrypt.hashSync(password, salt);
+const newPassword = bcrypt.hashSync(password, saltRounds);
 
 const email = process.env.EMAIL;
 
 const variables = [email, newPassword, 'admin'];
+console.log('VAL', variables[1]);
 
 
 // const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
