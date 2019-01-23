@@ -1,6 +1,8 @@
-import 'dotenv/config';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 import pool from '../../connection';
+
+dotenv.config();
 
 
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
