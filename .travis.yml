@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - "stable"
 env:
-  - process.env.PASSWORD
-  - process.env.EMAIL
 global:
   - export NODE_ENV=test
 dist: trusty
