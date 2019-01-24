@@ -8,7 +8,7 @@ dotenv.config();
 const sql = 'insert into users (email, password, role) values ($1, $2, $3)';
 
 const password = process.env.PASSWORD;
-console.log('PASS', password);
+// console.log('PASS', password);
 
 const saltRounds = 10;
 
