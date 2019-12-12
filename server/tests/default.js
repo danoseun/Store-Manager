@@ -19,7 +19,9 @@ describe('Test for index route', () => {
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
+          console.log('msss', msg1);
           expect(res.body.message).to.equal(msg1);
+          console.log('mssq', msg1);
           done();
         });
     });

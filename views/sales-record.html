@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <title>Store Manager | Sales-Record</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-bar">
+            <div class="logo"><a href="index.html">SM</a></div>
+            <nav>
+                <div class="nav"><a href="products.html">Products</a></div>
+                <div class="nav"><a href="sales-record-admin.html">Sales</a></div>
+                <div class="add-attendant nav">Add Attendant</div>
+                <div class="nav"><a href="index.html">Logout</a></div>
+                <div class="hamburger">
+                    <span>&#8801;</span>
+                    <div class="dropdown">
+                        <div><a href="products.html">Products</a></div>
+                        <div><a href="sales-record.html">Sales</a></div>
+                        <div class="add-attendant">Add Attendant</div>
+                        <div><a href="index.html">Logout</a></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="welcome-area">
+            <!-- Markup for responsive table begins here -->
+            <h1>attendant1 SALES RECORD</h1>
+            <div class="sales-table">
+                <table>
+                    <tr class="table-head" style="background: #004466;">
+                        <th>ID</th>
+                        <th>Sales Date</th>
+                        <!-- <th>Email</th> -->
+                        <th>Cart</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>10:10:2018 16:00</td>
+                        <!-- <td><span class="attendant-email">attendant1@sm.com</span></td> -->
+                        <td height="200" width="500">
+                            <div class="test-row">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Product: Milo <br>
+                                            Quantity: 20 <br>
+                                            Unit Price: &#8358;500 <br>
+                                            Amount: &#8358;10000
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Product: Bag of rice <br>
+                                            Quantity: 5 <br>
+                                            Unit Price: &#8358;15000 <br>
+                                            Amount: &#8358;75000
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Product: Bama <br>
+                                            Quantity: 10 <br>
+                                            Unit Price: &#8358;500 <br>
+                                            Amount: &#8358;5000
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Product: Bread <br>
+                                            Quantity: 2 <br>
+                                            Unit Price: &#8358;500 <br>
+                                            Amount: &#8358;1000
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>&#8358;91000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>10:10:2018 16:00</td>
+                        <!-- <td><span class="attendant-email">attendant@sm.com</span></td> -->
+                        <td>Sales List</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>30</td>
+                        <td>10:10:2018 16:00</td>
+                        <!-- <td><span class="attendant-email">attendant3@sm.com</span></td> -->
+                        <td>Sales List</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Markup for responsive table ends here -->
+        </div>
+    </div>
+    <div class="modal">
+        <form action="add-to-cart.html" class="signup-form">
+            <div class="cancel">&#9746;</div>
+            <h1>Create New Attendant</h1>
+            <label for="email">Email:</label>
+            <input type="text" placeholder="Email" autofocus autocomplete="">
+            <label for="password">Password:</label>
+            <input type="password" placeholder="Password">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script src="js/cart.js"></script>
+    <script src="js/fetch/signup.js"></script>
+    <script src="js/fetch/jwt-decode.min.js"></script>
+</body>
+
+</html>

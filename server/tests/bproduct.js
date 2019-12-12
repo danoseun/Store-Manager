@@ -34,7 +34,7 @@ describe('Create Token for attendant', () => {
       .end((error, res) => {
         expect(res).to.have.status(200);
         attendantToken = res.body.token;
-        done();
+        done();,
       });
   });
 });

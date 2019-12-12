@@ -133,6 +133,13 @@ class UserValidator {
             message: 'Authentication failed'
           });
         }
+
+        /**
+         * It's not necessary to check for
+         * undefined/unstringed password because every input ins a string
+         * It's also not necessary since every password that does not
+         * compare with the hash will always be wrong.
+         */
         if (password === undefined) {
           return res.status(401).json({
             status: 'Fail',

@@ -7,11 +7,12 @@ const displayModal = () => {
 document.querySelector('.add-attendant').addEventListener('click', displayModal);
 
 const cancelModal = (event) => {
+  event.preventDefault();
   modal.style.display = 'none';
   productModal.style.display = 'none';
 };
 document.querySelector('.cancel').addEventListener('click', cancelModal);
-document.querySelector('.close').addEventListener('click', cancelModal);
+/* document.querySelector('.close').addEventListener('click', cancelModal); */
 
 window.onclick = (event) => {
   if (event.target === modal || event.target === productModal) {
@@ -29,4 +30,3 @@ const product = document.querySelectorAll('.product');
 productName.forEach((name, index, nameArray) => {
   nameArray[index].addEventListener('click', displayProduct);
 });
-
